@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activity.MainActivity">
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/logo"
+        android:layout_marginTop="200dp"/>
+
+    <TextView
+        android:id="@+id/xlsx_reader"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_gravity="center_horizontal"
+        android:text="XLSX Reader - Excel Viewer"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="300dp"/>
+
+    <TextView
+        android:id="@+id/this_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="This action can contain ads…" />
+    <ProgressBar
+        android:id="@+id/loading_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        />
+</LinearLayout>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">पफ़ाइल मैनेजर</string>
+
+    <string name="home_menu" >  घर</string>
+    <string name="bookmark_menu" >  बुकमार्क</string>
+    <string name="setting_menu" >  सेटिंग</string>
+
+    <string name="rename_popup" >  नाम बदलें</string>
+    <string name="bookmark_popup" >  बुकमार्क</string>
+    <string name="delete_popup" >  मिटाना</string>
+
+    <string name="sortAZ_dialog" >  क्रमबद्ध करें A -> Z</string>
+    <string name="sortZA_dialog" >  क्रमबद्ध करें Z -> A</string>
+
+    <string name="search_view_home" >  दस्तावेज़ ढूंढें...</string>
+    <string name="search_view_bookmark" >  दस्तावेज़ ढूंढें...</string>
+    <!--    frag Setting-->
+    <string name="setting_frag" >  सेटिंग</string>
+    <string name="tv_xlsx" >  XLSX रीडर और &amp; एक्सेल व्यूअर</string>
+    <string name="tv_version" >  संस्करण 1.1.1</string>
+
+    <string name="tv_lang" >  भाषा</string>
+    <string name="tv_lang1" >  अपनी भाषा चुनें</string>
+    <string name="tv_share" >  शेयर करना</string>
+    <string name="tv_share1" >  इस ऐप को मित्र या परिवार के लिए साझा करें</string>
+    <string name="tv_feedback" >  प्रतिक्रिया</string>
+    <string name="tv_feedback1" >  कृपया प्रतिक्रिया दें</string>
+    <string name="tv_more" >  और ज्यादा एप्लीकेशन</string>
+    <string name="tv_more1" >  गूगल प्ले पर हमारा और ऐप देखें</string>
+    <string name="tv_privacy" >  गोपनीयता नीति</string>
+    <string name="tv_privacy1" >  हमारी गोपनीयता नीति देखें</string>
+    <!--frag Language-->
+    <string name="tv_frag_lang" >  भाषा</string>
+    <!--dialog Feedback-->
+    <string name="dialog_feedback" >  प्रतिक्रिया</string>
+    <string name="tv_dialog_feedback" >  कृपया हमें कुछ प्रतिक्रिया भेजें</string>
+    <string name="ed_dialog_feedback" >  कुछ प्रतिक्रिया लिखें</string>
+    <string name="btn_cacel" >   रद्द करना</string>
+    <string name="btn_send" >  भेजना</string>
+    <!--    dialog Rename-->
+    <string name="tv_rename" >  नाम बदलें</string>
+    <string name="btn_agree" >  सहमत</string>
+    <!--dialog Delete-->
+    <string name="tv_delete" >फ़ाइल नष्ट करें</string>
+    <string name="tv_delete1" >क्या आप सचमुच इस फ़ाइल को हटाना चाहते हैं?</string>
+    <string name="btn_delete" >मिटाना</string>
+
+    <!-- Toast-->
+    <string name="toast_sortAZ" >क्रमबद्ध करें A -> Z</string>
+    <string name="toast_sortZA" >  क्रमबद्ध करें Z -> A</string>
+    <string name="toast_rename" >  सफलतापूर्वक ठीक किया गया</string>
+    <string name="toast_delete" >  सफलतापूर्वक मिटाया गया</string>
+    <string name="toast_bookmark">  सफलतापूर्वक चिह्नित करें</string>
+    <string name="toast_sent">  भेजा</string>
+    <string name="toast_lang"> भाषा अभी समर्थित नहीं है</string>
+    <string name="toast_exists"> फ़ाइल मौजूद नहीं है </string>
+    <string name="toast_failed"> असफल </string>
+    <!--    Screen saver-->
+    <string name="sc1_tv1">प्रोफेशनल एक्सेल रीडर</string>
+    <string name="sc1_tv2">हमारा एप्लिकेशन आपके पास मौजूद एक्सेल \n दस्तावेज़ फ़ाइल को तुरंत पढ़ सकता है।</string>
+    <string name="sc2_tv1">प्रबंधक एक्सेल उपकरण</string>
+    <string name="sc2_tv2">सरल एक्सेल फ़ाइल प्रबंधन उपकरण, कहीं भी उपयोग में आसान।</string>
+    <string name="sc3_tv1">काम के लिए सुविधा</string>
+    <string name="sc3_tv2">पेशेवर तरीके से काम करने का मतलब यह नहीं है कि आपको पूरे दिन अपने डेस्कटॉप के सामने बैठना होगा।</string>
+    <!--    MainViewPager-->
+    <string name="tv_skip"> छोडना </string>
+    <string name="btn_next"> अगला</string>
+    <string name="btn_start"> शुरू हो जाओ </string>
+</resources>

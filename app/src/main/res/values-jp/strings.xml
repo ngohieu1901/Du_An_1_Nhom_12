@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ファイルマネージャー</string>
+
+    <string name="home_menu" >  家</string>
+    <string name="bookmark_menu" >  ブックマーク</string>
+    <string name="setting_menu" >  設定</string>
+
+    <string name="rename_popup" >  名前の変更</string>
+    <string name="bookmark_popup" >  ブックマーク</string>
+    <string name="delete_popup" >  消去</string>
+
+    <string name="sortAZ_dialog" >  A -> Z で並べ替え</string>
+    <string name="sortZA_dialog" >  ソート Z -> A</string>
+
+    <string name="search_view_home" >  文書を見つけてください...</string>
+    <string name="search_view_bookmark" >  文書を見つけてください...</string>
+    <!--    frag Setting-->
+    <string name="setting_frag" >  設定</string>
+    <string name="tv_xlsx" >  XLSX リーダーおよび &amp; Excel ビューア</string>
+    <string name="tv_version" >  バージョン 1.1.1</string>
+
+    <string name="tv_lang" >  言語</string>
+    <string name="tv_lang1" >  言語を選択してください</string>
+    <string name="tv_share" >  共有</string>
+    <string name="tv_share1" >  このアプリを友人や家族と共有します</string>
+    <string name="tv_feedback" >  フィードバック</string>
+    <string name="tv_feedback1" >  フィードバックをお寄せください</string>
+    <string name="tv_more" >  より多くのアプリ</string>
+    <string name="tv_more1" >  Google Playでアプリをもっと見る</string>
+    <string name="tv_privacy" >  プライバシーポリシー</string>
+    <string name="tv_privacy1" >  プライバシーポリシーを見る</string>
+    <!--frag Language-->
+    <string name="tv_frag_lang" >  言語</string>
+    <!--dialog Feedback-->
+    <string name="dialog_feedback" >  フィードバック</string>
+    <string name="tv_dialog_feedback" >  フィードバックをお寄せください</string>
+    <string name="ed_dialog_feedback" >  フィードバックを書く</string>
+    <string name="btn_cacel" >   キャンセル</string>
+    <string name="btn_send" >  送信</string>
+    <!--    dialog Rename-->
+    <string name="tv_rename" >  名前の変更</string>
+    <string name="btn_agree" >  同意する</string>
+    <!--dialog Delete-->
+    <string name="tv_delete" >ファイルを削除する</string>
+    <string name="tv_delete1" >本当にこのファイルを削除してもよろしいですか?</string>
+    <string name="btn_delete" >消去</string>
+
+    <!--    Toast-->
+    <string name="toast_sortAZ" > A -> Z で並べ替え</string>
+    <string name="toast_sortZA" >  ソート Z -> A</string>
+    <string name="toast_rename" >  正常に修正されました</string>
+    <string name="toast_delete" >  正常に削除されました</string>
+    <string name="toast_bookmark">  正常にマークされました</string>
+    <string name="toast_sent">  送信済み</string>
+    <string name="toast_lang" > 言語はまだサポートされていません</string>
+    <string name="toast_exists"> ファイルが存在しません </string>
+    <string name="toast_failed"> 失敗 </string>
+    <!--Screen saver-->
+    <string name="sc1_tv1">プロフェッショナル Excel リーダー</string>
+    <string name="sc1_tv2">私たちのアプリケーションは、あなたが持っている Excel ドキュメント ファイルを \n すばやく読み取ることができます。</string>
+    <string name="sc2_tv1">マネージャー Excel ツール</string>
+    <string name="sc2_tv2">シンプルな Excel ファイル管理ツールで、どこでも簡単に使用できます。</string>
+    <string name="sc3_tv1">仕事に便利</string>
+    <string name="sc3_tv2">プロフェッショナルに仕事をこなすということは、一日中デスクトップの前に座っていなければならないという意味ではありません。</string>
+    <!--    MainViewPager-->
+    <string name="tv_skip"> スキップ </string>
+    <string name="btn_next"> 次</string>
+    <string name="btn_start">始めましょう</string>
+</resources>

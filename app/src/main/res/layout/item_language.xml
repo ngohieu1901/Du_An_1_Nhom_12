@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="20dp"
+    android:layout_margin="10dp"
+    android:id="@+id/row_linear">
+
+    <LinearLayout
+        android:id="@+id/frame_1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        >
+        <ImageView
+            android:id="@+id/img_hinh"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="15dp"/>
+        <TextView
+            android:id="@+id/tv_ten"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:textSize="20sp"
+            android:gravity="center_vertical|left"
+            android:layout_marginRight="70dp"
+            />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:clickable="false"
+            android:button="@drawable/custom_radio_button"
+            android:id="@+id/rb_selected"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

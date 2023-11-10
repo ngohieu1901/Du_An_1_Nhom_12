@@ -1,0 +1,70 @@
+<resources>
+    <string name="app_name">FileManager</string>
+
+    <string name="home_menu" > Home </string>
+    <string name="bookmark_menu" > Bookmark </string>
+    <string name="setting_menu" > Setting</string>
+
+    <string name="rename_popup" > Rename </string>
+    <string name="bookmark_popup" > Bookmark </string>
+    <string name="delete_popup" > Delete </string>
+
+    <string name="sortAZ_dialog" > Sort A -> Z</string>
+    <string name="sortZA_dialog" > Sort Z -> A</string>
+
+    <string name="search_view_home" > Find the document...</string>
+    <string name="search_view_bookmark" > Find the document...</string>
+    <!--    frag Setting-->
+    <string name="setting_frag" > Setting </string>
+    <string name="tv_xlsx" > XLSX READER &amp; EXCEL VIEWER </string>
+    <string name="tv_version" > Version 1.1.1 </string>
+
+    <string name="tv_lang" > Language </string>
+    <string name="tv_lang1" > Chose your language </string>
+    <string name="tv_share" > Share </string>
+    <string name="tv_share1" > Share this app for friend or family </string>
+    <string name="tv_feedback" > Feedback </string>
+    <string name="tv_feedback1" > Please give a feedback </string>
+    <string name="tv_more" > More app </string>
+    <string name="tv_more1" > View our more app on google play </string>
+    <string name="tv_privacy" > Privacy Policy </string>
+    <string name="tv_privacy1" > View our privacy policy </string>
+    <!--frag Language-->
+    <string name="tv_frag_lang" > Language </string>
+    <!--dialog Feedback-->
+    <string name="dialog_feedback" > Feedback </string>
+    <string name="tv_dialog_feedback" > Please send us some feedback </string>
+    <string name="ed_dialog_feedback" > Write some feedback </string>
+    <string name="btn_cacel" >  Cancel </string>
+    <string name="btn_send" > Send </string>
+    <!--    dialog Rename-->
+    <string name="tv_rename" > Rename </string>
+    <string name="btn_agree" > AGREE </string>
+    <!--dialog Delete-->
+    <string name="tv_delete" >Delete file </string>
+    <string name="tv_delete1" >Do you realy want to delete this file ? </string>
+    <string name="btn_delete" >DELETE </string>
+
+    <!--Toast-->
+    <string name="toast_sortAZ" > Sort A -> Z </string>
+    <string name="toast_sortZA" > Sort Z -> A </string>
+    <string name="toast_rename" > Fixed successfully </string>
+    <string name="toast_delete" > Deleted successfully </string>
+    <string name="toast_bookmark"> Mark successfully </string>
+    <string name="toast_sent"> Sent </string>
+    <string name="toast_lang" > Language not supported yet</string>
+    <string name="toast_exists"> File not exists </string>
+    <string name="toast_failed"> Failed </string>
+    <!--    Screen saver-->
+    <string name="sc1_tv1">Professional Excel Reader</string>
+    <string name="sc1_tv2">Our application can quickly read the excel \n document file you have.</string>
+    <string name="sc2_tv1">Manager Excel Tools</string>
+    <string name="sc2_tv2">Simple Excel file management tool, easy to use anywhere.</string>
+    <string name="sc3_tv1">Convenience for work</string>
+    <string name="sc3_tv2">Getting work done professionally doesn\'t mean you have to sit in front of your desktop all day.</string>
+
+    <!--    MainViewPager-->
+    <string name="tv_skip"> Skip </string>
+    <string name="btn_next"> Next</string>
+    <string name="btn_start"> Get Started </string>
+</resources>

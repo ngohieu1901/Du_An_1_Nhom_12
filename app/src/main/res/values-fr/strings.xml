@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name"> Gestionnaire de fichiers</string>
+
+    <string name="home_menu" > Maison </string>
+    <string name="bookmark_menu" > Signet </string>
+    <string name="setting_menu" > Paramètre</string>
+
+    <string name="rename_popup" > Renommer </string>
+    <string name="bookmark_popup" > Bookmark </string>
+    <string name="delete_popup" > Supprimer </string>
+
+    <string name="sortAZ_dialog" > Trier A -> Z</string>
+    <string name="sortZA_dialog" > Trier Z -> A</string>
+
+    <string name="search_view_home" > Trouver le document...</string>
+    <string name="search_view_bookmark" > Trouver le document...</string>
+    <!--    frag Setting-->
+    <string name="setting_frag" > Paramètre </string>
+    <string name="tv_xlsx" >LECTEUR XLSX &amp; VISIONNEUR EXCEL </string>
+    <string name="tv_version" > Version 1.1.1</string>
+
+    <string name="tv_lang" > Langue </string>
+    <string name="tv_lang1" > Choisissez votre langue </string>
+    <string name="tv_share" > Partager </string>
+    <string name="tv_share1" > Partagez cette application avec un ami ou une famille </string>
+    <string name="tv_feedback" > Retour </string>
+    <string name="tv_feedback1" > S\'il vous plaît donner un feedback </string>
+    <string name="tv_more" > Plus d\'application</string>
+    <string name="tv_more1" > Consultez nos autres applications sur Google Play </string>
+    <string name="tv_privacy" > Politique de confidentialité </string>
+    <string name="tv_privacy1" > Consultez notre politique de confidentialité </string>
+    <!--frag Language-->
+    <string name="tv_frag_lang" > Langua </string>
+    <!--dialog Feedback-->
+    <string name="dialog_feedback" > Retour </string>
+    <string name="tv_dialog_feedback" >S\'il vous plaît envoyez-nous des commentaires </string>
+    <string name="ed_dialog_feedback" >Écrivez quelques commentaires </string>
+    <string name="btn_cacel" >Annuler </string>
+    <string name="btn_send" > Envoyer </string>
+    <!--    dialog Rename-->
+    <string name="tv_rename" > Renommer </string>
+    <string name="btn_agree" >ACCEPTER </string>
+    <!--dialog Delete-->
+    <string name="tv_delete" >Supprimer le fichier</string>
+    <string name="tv_delete1" >Voulez-vous vraiment supprimer ce fichier ?</string>
+    <string name="btn_delete" >SUPPRIMER </string>
+    <!--Toast-->
+    <string name="toast_sortAZ" >Trier A -> Z</string>
+    <string name="toast_sortZA" >  Trier Z -> A</string>
+    <string name="toast_rename" >  Corrigé avec succès</string>
+    <string name="toast_delete" >  Supprimé avec succès</string>
+    <string name="toast_bookmark">  Marquer avec succès</string>
+    <string name="toast_sent">  Envoyé</string>
+    <string name="toast_lang" > Langue pas encore prise en charge</string>
+    <string name="toast_exists"> Le fichier n\'existe pas </string>
+    <string name="toast_failed"> Échouer </string>
+    <!--    Screen saver-->
+    <string name="sc1_tv1">Lecteur Excel professionnel</string>
+    <string name="sc1_tv2">Notre application peut lire rapidement le fichier de document Excel \n dont vous disposez.</string>
+    <string name="sc2_tv1">Outils Excel du gestionnaire</string>
+    <string name="sc2_tv2">Outil simple de gestion de fichiers Excel, facile à utiliser n’importe où.</string>
+    <string name="sc3_tv1">Commodité pour le travail</string>
+    <string name="sc3_tv2">Faire son travail de manière professionnelle ne signifie pas que vous devez rester assis devant votre bureau toute la journée.</string>
+    <!--    MainViewPager-->
+    <string name="tv_skip"> Sauter </string>
+    <string name="btn_next"> Suivant</string>
+    <string name="btn_start"> Commencer </string>
+</resources>

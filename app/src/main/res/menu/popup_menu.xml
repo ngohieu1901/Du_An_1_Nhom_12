@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/rename"
+        android:title="@string/rename_popup"
+        android:icon="@drawable/rename_icon"
+        app:showAsAction="always"/>
+    <item android:id="@+id/bookmark"
+        android:title="@string/bookmark_popup"
+        android:icon="@drawable/bookmark_menu"
+        app:showAsAction="always"/>
+    <item android:id="@+id/delete"
+        app:showAsAction="always"
+        android:title="@string/delete_popup"
+        android:icon="@drawable/delete_icon"/>
+</menu>
