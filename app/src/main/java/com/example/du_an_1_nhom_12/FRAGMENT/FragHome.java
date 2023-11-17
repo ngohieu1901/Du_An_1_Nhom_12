@@ -245,6 +245,12 @@ public class FragHome extends Fragment  {
         return list;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy: ");
+    }
+
     private ArrayList<AllFileDTO> loadFiles() {
         ArrayList<AllFileDTO> list = new ArrayList<>();
         String path = Environment.getExternalStorageDirectory().toString();
@@ -276,6 +282,7 @@ public class FragHome extends Fragment  {
         }
         return list;
     }
+    
 
 }
 

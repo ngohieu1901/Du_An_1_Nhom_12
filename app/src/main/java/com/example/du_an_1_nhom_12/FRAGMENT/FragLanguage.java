@@ -35,14 +35,12 @@ public class FragLanguage extends Fragment {
 
         list = new ArrayList<>();
         list.add(new LanguageFragDTO(false,"English"));
-        list.add(new LanguageFragDTO(false,"Korean"));
         list.add(new LanguageFragDTO(false,"Japanese"));
         list.add(new LanguageFragDTO(false,"French"));
         list.add(new LanguageFragDTO(false,"Hindi"));
-        list.add(new LanguageFragDTO(false,"Portuguese"));
         list.add(new LanguageFragDTO(false,"Spanish"));
+        list.add(new LanguageFragDTO(false,"Portuguese"));
         list.add(new LanguageFragDTO(false,"Vietnamese"));
-        list.add(new LanguageFragDTO(false,"Phillipinese"));
         list.add(new LanguageFragDTO(false,"German"));
 
         adapter = new LanguageFragADAPTER(getContext(),list);

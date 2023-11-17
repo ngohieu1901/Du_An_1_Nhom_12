@@ -60,13 +60,13 @@ public class LanguageFragADAPTER extends RecyclerView.Adapter<LanguageFragADAPTE
                 Log.e("onClick", "onClick: " + position);
                 if (position == 0){
                     LanguageStatic.setLanguage(context,"en");
-                }else if(position == 2){
+                }else if(position == 1){
                     LanguageStatic.setLanguage(context,"jp");
-                }else if(position == 3){
+                }else if(position == 2){
                     LanguageStatic.setLanguage(context,"fr");
-                }else if(position == 4){
+                }else if(position == 3){
                     LanguageStatic.setLanguage(context,"hi");
-                } else if (position == 6) {
+                } else if (position == 4) {
                     LanguageStatic.setLanguage(context,"sp");
                 }else {
                     Toast.makeText(context, context.getString(R.string.toast_lang), Toast.LENGTH_SHORT).show();

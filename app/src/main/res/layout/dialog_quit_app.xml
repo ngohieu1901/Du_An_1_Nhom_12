@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="330dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/border_dialog"
+    android:paddingLeft="25dp"
+    android:paddingRight="25dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Are you sure to quit this app ?"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginBottom="35dp"
+        android:layout_marginTop="35dp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="18dp">
+        <Button
+            android:id="@+id/btn_cancel2"
+            android:layout_width="136dp"
+            android:layout_height="36dp"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/status_pdf"
+            android:background="@drawable/border_button_quit"
+            android:layout_marginRight="15dp"/>
+        <Button
+            android:id="@+id/btn_quit"
+            android:layout_width="136dp"
+            android:layout_height="36dp"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:text="Quit"
+            android:textAllCaps="false"
+            android:background="@drawable/border_button_quit"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/language"/>
+    </LinearLayout>
+
+</LinearLayout>

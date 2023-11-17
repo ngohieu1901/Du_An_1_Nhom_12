@@ -164,7 +164,7 @@
 
 <!--    MoreApp-->
     <LinearLayout
-        android:id="@+id/layout_moreapp"
+        android:id="@+id/layout_rate_app"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal"
@@ -175,8 +175,8 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/app_icon"
-            android:layout_marginRight="16dp"
+            android:src="@drawable/ic_rate"
+            android:layout_marginRight="13dp"
             android:layout_gravity="center_vertical"
             />
         <LinearLayout
@@ -186,7 +186,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tv_more"
+                android:text="Rate app"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="16sp"/>

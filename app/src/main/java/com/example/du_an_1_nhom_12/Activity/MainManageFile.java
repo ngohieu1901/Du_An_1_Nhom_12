@@ -2,11 +2,16 @@ package com.example.du_an_1_nhom_12.Activity;
 
 import static android.os.Build.VERSION.SDK_INT;
 
+import android.app.Dialog;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
@@ -59,6 +64,26 @@ public class MainManageFile extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.BorderDialogTheme);
+        View v = getLayoutInflater().inflate(R.layout.dialog_quit_app, null, false);
+        builder.setView(v);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        Button btn_cancel = v.findViewById(R.id.btn_cancel2);
+        Button btn_quit = v.findViewById(R.id.btn_quit);
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        btn_quit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

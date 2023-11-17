@@ -34,35 +34,39 @@ public class MainActivity extends AppCompatActivity {
                     //dc chon
                     Intent intent = new Intent(MainActivity.this,MainViewPager.class);
                     startActivity(intent);
-                    finish();
+                    finishAffinity();
                     if (started) {
                         //dc chon
                         Intent intent0 = new Intent(MainActivity.this,PermissionActivity.class);
+                        intent0.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent0);
-                        finish();
+                        finishAffinity();
                         if (permission){
                             //dc chon
                             Intent intent1 = new Intent(MainActivity.this,MainManageFile.class);
+                            intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent1);
-                            finish();
+                            finishAffinity();
                         }else {
                             //chua dc chon
                             Intent intent2 = new Intent(MainActivity.this,PermissionActivity.class);
+                            intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent2);
-                            finish();
+                            finishAffinity();
                         }
                     }else {
                         //chua dc chon
                         Intent intent3 = new Intent(MainActivity.this, MainViewPager.class);
+                        intent3.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent3);
-                        finish();
+                        finishAffinity();
                     }
                 }else {
                     //chua dc chon
                     Intent intent4 = new Intent(MainActivity.this, LanguageActivity.class);
-//                    intent4.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent4.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent4);
-                    finish();
+                    finishAffinity();
                 }
             }
         }.start();

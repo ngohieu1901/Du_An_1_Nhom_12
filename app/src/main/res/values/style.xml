@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BorderDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowBackground">@drawable/border_dialog</item>
+        <!-- Các thuộc tính khác của dialog style -->
+    </style>
+</resources>

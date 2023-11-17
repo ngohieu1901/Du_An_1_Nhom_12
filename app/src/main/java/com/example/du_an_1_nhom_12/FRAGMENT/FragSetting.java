@@ -17,12 +17,14 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.du_an_1_nhom_12.Activity.FeedbackActivity;
+import com.example.du_an_1_nhom_12.Activity.RateAppActivity;
 import com.example.du_an_1_nhom_12.BuildConfig;
 import com.example.du_an_1_nhom_12.R;
 
 
 public class FragSetting extends Fragment {
-    LinearLayout layout_feedback, layout_lang, layout_share;
+    LinearLayout layout_feedback, layout_lang, layout_share,layout_rate_app;
     boolean isSelected = false;
     @Nullable
     @Override
@@ -37,28 +39,7 @@ public class FragSetting extends Fragment {
         layout_feedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                View view = getLayoutInflater().inflate(R.layout.dialog_feedback,null,false);
-                builder.setView(view);
-                Dialog dialog = builder.create();
-                dialog.show();
-
-                Button btn_cancel = view.findViewById(R.id.btn_cancel);
-                Button btn_send = view.findViewById(R.id.btn_send);
-                btn_cancel.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-
-                btn_send.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(getContext(), getContext().getString(R.string.toast_sent), Toast.LENGTH_SHORT).show();
-                        dialog.dismiss();
-                    }
-                });
+                startActivity(new Intent(getActivity(), FeedbackActivity.class));
             }
         });
 
@@ -96,6 +77,14 @@ public class FragSetting extends Fragment {
                 } catch(Exception e) {
                     e.printStackTrace();
                 }
+            }
+        });
+
+        layout_rate_app = view.findViewById(R.id.layout_rate_app);
+        layout_rate_app.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), RateAppActivity.class));
             }
         });
     }

@@ -28,7 +28,6 @@ public class LanguageActivity extends AppCompatActivity implements LanguageADAPT
     ArrayList<LanguageDTO> list;
     private boolean openActivity = false;
     ImageView tv_check;
-    private FrameLayout native_ads;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
