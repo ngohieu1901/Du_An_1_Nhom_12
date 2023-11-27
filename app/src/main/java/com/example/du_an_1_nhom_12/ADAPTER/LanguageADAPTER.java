@@ -82,7 +82,7 @@ public class LanguageADAPTER extends RecyclerView.Adapter<LanguageADAPTER.ViewHo
         holder.radioButton.setChecked(position == selectedPosition);
 
         if(row_index == position){
-            holder.layout.setBackgroundColor(Color.parseColor("#217346"));
+            holder.layout.setBackgroundColor(Color.parseColor("#CD3527"));
             holder.tv_ten.setTextColor(Color.parseColor("#FFFFFF"));
         }else{
             holder.layout.setBackgroundColor(Color.parseColor("#ffffff"));

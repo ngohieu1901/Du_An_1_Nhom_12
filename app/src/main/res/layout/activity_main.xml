@@ -39,5 +39,6 @@
         android:indeterminate="true"
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
+        android:progressDrawable="@drawable/progressbar_custom"
         />
 </LinearLayout>

@@ -124,7 +124,7 @@ public class FragHome extends Fragment  {
             boolean isChecked = false;
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),R.style.BorderDialogTheme);
                 View view = getLayoutInflater().inflate(R.layout.dialog_sort, null, false);
                 builder.setView(view);
                 Dialog dialog = builder.create();
@@ -158,15 +158,15 @@ public class FragHome extends Fragment  {
                     public void onClick(View v) {
                         check_az.setVisibility(View.VISIBLE);
                         check_za.setVisibility(View.INVISIBLE);
-                        iv_az.setImageResource(R.drawable.sort_az);
-                        tv_az.setTextColor(Color.parseColor("#217346"));
+                        iv_az.setImageResource(R.drawable.ic_sort_red);
+                        tv_az.setTextColor(Color.parseColor("#CD3527"));
                         iv_za.setImageResource(R.drawable.sort_az_white);
                         tv_za.setTextColor(Color.parseColor("#FF000000"));
                         // set SharedPreferences
                         editor.putBoolean("check_az_visible", true);
                         editor.putBoolean("check_za_visible", false);
-                        editor.putInt("iv_az_resource", R.drawable.sort_az);
-                        editor.putString("tv_az_color", "#217346");
+                        editor.putInt("iv_az_resource", R.drawable.ic_sort_red);
+                        editor.putString("tv_az_color", "#CD3527");
                         editor.putInt("iv_za_resource", R.drawable.sort_az_white);
                         editor.putString("tv_za_color", "#FF000000");
                         editor.apply();
@@ -187,8 +187,8 @@ public class FragHome extends Fragment  {
                     public void onClick(View v) {
                         check_az.setVisibility(View.INVISIBLE);
                         check_za.setVisibility(View.VISIBLE);
-                        iv_za.setImageResource(R.drawable.sort_az);
-                        tv_za.setTextColor(Color.parseColor("#217346"));
+                        iv_za.setImageResource(R.drawable.ic_sort_red);
+                        tv_za.setTextColor(Color.parseColor("#CD3527"));
                         iv_az.setImageResource(R.drawable.sort_az_white);
                         tv_az.setTextColor(Color.parseColor("#FF000000"));
                         // Lưu các giá trị vào SharedPreferences
@@ -196,8 +196,8 @@ public class FragHome extends Fragment  {
                         editor.putBoolean("check_za_visible", true);
                         editor.putInt("iv_az_resource", R.drawable.sort_az_white);
                         editor.putString("tv_az_color", "#FF000000");
-                        editor.putInt("iv_za_resource", R.drawable.sort_az);
-                        editor.putString("tv_za_color", "#217346");
+                        editor.putInt("iv_za_resource", R.drawable.ic_sort_red);
+                        editor.putString("tv_za_color", "#CD3527");
                         editor.apply();
 
                         Collections.sort(list, new NameComparator());
