@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name"> Gestión de archivos</string>
+    <string name="app_name"> PDF Manager</string>
     <string name="home_menu" > Hogar </string>
     <string name="bookmark_menu" > Marcador </string>
     <string name="setting_menu" >Configuración</string>
@@ -16,7 +16,7 @@
     <string name="search_view_bookmark" > Encuentra el documento...</string>
     <!--Frag Setting-->
     <string name="setting_frag" > Configuració </string>
-    <string name="tv_xlsx" > LECTOR XLSX &amp; VISOR EXCEL </string>
+    <string name="tv_xlsx" > LECTOR DE PDF Y ESCANEO DE PDF </string>
     <string name="tv_version" > Versión 1.1.1</string>
 
     <string name="tv_lang" > Idioma </string>
@@ -25,11 +25,14 @@
     <string name="tv_share1" > Comparte esta aplicación para amiga o familia</string>
     <string name="tv_feedback" >Comentario </string>
     <string name="tv_feedback1" > Por favor danos tu opinión </string>
-    <string name="tv_more" > Más aplicaciones </string>
-    <string name="tv_more1" > Vea nuestra aplicación más en Google Play. </string>
-    <string name="tv_privacy" > Política de Privacidad </string>
-    <string name="tv_privacy1" > Observe nuestra política de privacidad </string>
+    <string name="tv_scan" > Escanear </string>
+    <string name="tv_scan1" > Escanea tus documentos </string>
+    <string name="tv_write" > Escribir pdf </string>
+    <string name="tv_write1" > Crear un archivo PDF </string>
+    <string name="tv_rate"> Calificar </string>
+    <string name="tv_rate1"> Califica nuestra aplicación </string>
 
+    <!--frag Language-->
     <string name="tv_frag_lang" > Idioma </string>
 
     <!--dialog Feedback-->

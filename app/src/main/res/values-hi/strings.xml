@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">पफ़ाइल मैनेजर</string>
+    <string name="app_name">PDF Manager</string>
 
     <string name="home_menu" >  घर</string>
     <string name="bookmark_menu" >  बुकमार्क</string>
@@ -17,7 +17,7 @@
     <string name="search_view_bookmark" >  दस्तावेज़ ढूंढें...</string>
     <!--    frag Setting-->
     <string name="setting_frag" >  सेटिंग</string>
-    <string name="tv_xlsx" >  XLSX रीडर और &amp; एक्सेल व्यूअर</string>
+    <string name="tv_xlsx" >  पीडीएफ रीडर और स्कैन पीडीएफ </string>
     <string name="tv_version" >  संस्करण 1.1.1</string>
 
     <string name="tv_lang" >  भाषा</string>
@@ -26,10 +26,12 @@
     <string name="tv_share1" >  इस ऐप को मित्र या परिवार के लिए साझा करें</string>
     <string name="tv_feedback" >  प्रतिक्रिया</string>
     <string name="tv_feedback1" >  कृपया प्रतिक्रिया दें</string>
-    <string name="tv_more" >  और ज्यादा एप्लीकेशन</string>
-    <string name="tv_more1" >  गूगल प्ले पर हमारा और ऐप देखें</string>
-    <string name="tv_privacy" >  गोपनीयता नीति</string>
-    <string name="tv_privacy1" >  हमारी गोपनीयता नीति देखें</string>
+    <string name="tv_scan" > स्कैन </string>
+    <string name="tv_scan1" >  अपने दस्तावेज़ स्कैन करें </string>
+    <string name="tv_write" >  पीडीएफ लिखें</string>
+    <string name="tv_write1" >  एक पीडीएफ फाइल बनाएं</string>
+    <string name="tv_rate"> दर </string>
+    <string name="tv_rate1"> हमारे ऐप को रेट करें </string>
     <!--frag Language-->
     <string name="tv_frag_lang" >  भाषा</string>
     <!--dialog Feedback-->

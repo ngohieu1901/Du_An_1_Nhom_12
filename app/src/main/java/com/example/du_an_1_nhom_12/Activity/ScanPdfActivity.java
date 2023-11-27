@@ -6,12 +6,11 @@ import android.os.Bundle;
 
 import com.example.du_an_1_nhom_12.R;
 
-public class RateAppActivity extends AppCompatActivity {
+public class ScanPdfActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rate_app);
-
+        setContentView(R.layout.activity_scan_pdf);
     }
 }

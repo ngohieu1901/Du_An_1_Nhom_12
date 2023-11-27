@@ -10,7 +10,7 @@
         android:layout_height="60dp"
         android:text="Permission"
         android:textSize="30dp"
-        android:textColor="#217346"
+        android:textColor="#CD3527"
         android:textStyle="bold"
         android:gravity="center"
         android:layout_marginBottom="30dp"
@@ -44,7 +44,7 @@
         android:padding="10dp"
         android:textSize="20sp"
         android:text="Continue"
-        android:textColor="@color/black"
+        android:textColor="#CD3527"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="90dp"
         android:visibility="invisible"/>

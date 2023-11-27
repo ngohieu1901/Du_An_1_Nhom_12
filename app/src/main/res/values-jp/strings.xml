@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ファイルマネージャー</string>
+    <string name="app_name">PDF Manager</string>
 
     <string name="home_menu" >  家</string>
     <string name="bookmark_menu" >  ブックマーク</string>
@@ -17,7 +17,7 @@
     <string name="search_view_bookmark" >  文書を見つけてください...</string>
     <!--    frag Setting-->
     <string name="setting_frag" >  設定</string>
-    <string name="tv_xlsx" >  XLSX リーダーおよび &amp; Excel ビューア</string>
+    <string name="tv_xlsx" >  PDF リーダー &amp; PDF をスキャン </string>
     <string name="tv_version" >  バージョン 1.1.1</string>
 
     <string name="tv_lang" >  言語</string>
@@ -26,10 +26,12 @@
     <string name="tv_share1" >  このアプリを友人や家族と共有します</string>
     <string name="tv_feedback" >  フィードバック</string>
     <string name="tv_feedback1" >  フィードバックをお寄せください</string>
-    <string name="tv_more" >  より多くのアプリ</string>
-    <string name="tv_more1" >  Google Playでアプリをもっと見る</string>
-    <string name="tv_privacy" >  プライバシーポリシー</string>
-    <string name="tv_privacy1" >  プライバシーポリシーを見る</string>
+    <string name="tv_scan" >  スキャン </string>
+    <string name="tv_scan1" >  書類をスキャンする </string>
+    <string name="tv_write" >  PDFを書く </string>
+    <string name="tv_write1" >  PDFファイルを作成する </string>
+    <string name="tv_rate"> レート </string>
+    <string name="tv_rate1"> アプリを評価する </string>
     <!--frag Language-->
     <string name="tv_frag_lang" >  言語</string>
     <!--dialog Feedback-->

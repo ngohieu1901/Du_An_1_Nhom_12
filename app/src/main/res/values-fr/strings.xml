@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name"> Gestionnaire de fichiers</string>
+    <string name="app_name"> PDF Manager</string>
 
     <string name="home_menu" > Maison </string>
     <string name="bookmark_menu" > Signet </string>
@@ -16,7 +16,7 @@
     <string name="search_view_bookmark" > Trouver le document...</string>
     <!--    frag Setting-->
     <string name="setting_frag" > Paramètre </string>
-    <string name="tv_xlsx" >LECTEUR XLSX &amp; VISIONNEUR EXCEL </string>
+    <string name="tv_xlsx" >LECTEUR PDF et numérisation PDF </string>
     <string name="tv_version" > Version 1.1.1</string>
 
     <string name="tv_lang" > Langue </string>
@@ -25,10 +25,12 @@
     <string name="tv_share1" > Partagez cette application avec un ami ou une famille </string>
     <string name="tv_feedback" > Retour </string>
     <string name="tv_feedback1" > S\'il vous plaît donner un feedback </string>
-    <string name="tv_more" > Plus d\'application</string>
-    <string name="tv_more1" > Consultez nos autres applications sur Google Play </string>
-    <string name="tv_privacy" > Politique de confidentialité </string>
-    <string name="tv_privacy1" > Consultez notre politique de confidentialité </string>
+    <string name="tv_scan" > Scannez</string>
+    <string name="tv_scan1" > Scannez vos documents </string>
+    <string name="tv_write" > Écrire un pdf </string>
+    <string name="tv_write1" > Créer un fichier PDF </string>
+    <string name="tv_rate"> Évaluez </string>
+    <string name="tv_rate1"> Évaluez notre application </string>
     <!--frag Language-->
     <string name="tv_frag_lang" > Langua </string>
     <!--dialog Feedback-->

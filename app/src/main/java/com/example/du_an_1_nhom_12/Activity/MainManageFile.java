@@ -28,7 +28,6 @@ public class MainManageFile extends AppCompatActivity {
     FragHome fragHome;
     FragBookmark fragBookmark;
     FragSetting fragSetting;
-    String TAG = "ok";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

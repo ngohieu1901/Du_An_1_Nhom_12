@@ -2,9 +2,11 @@ package com.example.du_an_1_nhom_12.Activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +14,7 @@ import com.example.du_an_1_nhom_12.R;
 
 
 public class MainActivity extends AppCompatActivity {
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
         boolean lang_selected = preferences.getBoolean("lang_selected",false);
         boolean started = preferences.getBoolean("started",false);
         boolean permission = preferences.getBoolean("permission",false);
+        progressBar = findViewById(R.id.loading_bar);
+        progressBar.setBackgroundColor(Color.parseColor("CD3527"));
 
         CountDownTimer countDownTimer = new CountDownTimer(2000,1000) {
             @Override

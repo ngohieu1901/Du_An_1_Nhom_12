@@ -28,7 +28,7 @@
         android:text="@string/btn_next"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:backgroundTint="#217346"
+        android:backgroundTint="#CD3527"
         android:background="@drawable/border_button"
         android:layout_gravity="center_horizontal|bottom"
         android:textColor="@color/white"/>

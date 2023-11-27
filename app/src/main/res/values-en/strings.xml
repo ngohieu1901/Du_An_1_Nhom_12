@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FileManager</string>
+    <string name="app_name">PDF Manager</string>
 
     <string name="home_menu" > Home </string>
     <string name="bookmark_menu" > Bookmark </string>
@@ -16,7 +16,7 @@
     <string name="search_view_bookmark" > Find the document...</string>
     <!--    frag Setting-->
     <string name="setting_frag" > Setting </string>
-    <string name="tv_xlsx" > XLSX READER &amp; EXCEL VIEWER </string>
+    <string name="tv_xlsx" > PDF READER &amp; Scan PDF </string>
     <string name="tv_version" > Version 1.1.1 </string>
 
     <string name="tv_lang" > Language </string>
@@ -25,10 +25,12 @@
     <string name="tv_share1" > Share this app for friend or family </string>
     <string name="tv_feedback" > Feedback </string>
     <string name="tv_feedback1" > Please give a feedback </string>
-    <string name="tv_more" > More app </string>
-    <string name="tv_more1" > View our more app on google play </string>
-    <string name="tv_privacy" > Privacy Policy </string>
-    <string name="tv_privacy1" > View our privacy policy </string>
+    <string name="tv_scan" > Scan camera </string>
+    <string name="tv_scan1" > Scan your documents</string>
+    <string name="tv_write" > Write PDF </string>
+    <string name="tv_write1" > Create file PDF </string>
+    <string name="tv_rate"> Rate </string>
+    <string name="tv_rate1"> Rate our app </string>
     <!--frag Language-->
     <string name="tv_frag_lang" > Language </string>
     <!--dialog Feedback-->

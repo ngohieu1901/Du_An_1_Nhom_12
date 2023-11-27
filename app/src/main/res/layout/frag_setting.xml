@@ -2,11 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="#217346"
+        android:background="#CD3527"
         android:text="@string/setting_frag"
         android:textSize="31sp"
         android:textColor="@color/white"
@@ -14,9 +15,9 @@
         android:gravity="center"
         android:layout_marginBottom="20dp"/>
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/logo_frag_setting"
+        android:layout_width="110dp"
+        android:layout_height="117dp"
+        android:src="@drawable/logo_app"
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
         />
@@ -38,7 +39,86 @@
         android:text="@string/tv_version"
         android:textSize="13sp"
         android:layout_marginBottom="5dp"/>
-
+    <!--   Scan-->
+    <LinearLayout
+        android:id="@+id/layout_scan"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp">
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="26dp"
+            android:src="@drawable/ic_scan"
+            android:layout_marginRight="13dp"
+            android:layout_gravity="center_vertical"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_scan"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/tv_scan1"
+                />
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:background="#B9B9B9"
+        android:layout_gravity="center_horizontal"/>
+    <!--    Write PDF-->
+    <LinearLayout
+        android:id="@+id/layout_write"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp">
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_write"
+            android:layout_marginRight="16dp"
+            android:layout_gravity="center_vertical"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_write"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/tv_write1"
+                />
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:background="#B9B9B9"
+        android:layout_gravity="center_horizontal"/>
     <LinearLayout
         android:id="@+id/layout_lang"
         android:layout_width="match_parent"
@@ -73,10 +153,10 @@
                 />
         </LinearLayout>
     </LinearLayout>
-    <ImageView
+    <View
         android:layout_width="300dp"
         android:layout_height="1dp"
-        android:src="@drawable/line_long"
+        android:background="#B9B9B9"
         android:layout_gravity="center_horizontal"/>
 
 <!--Share-->
@@ -114,10 +194,10 @@
                 />
         </LinearLayout>
     </LinearLayout>
-    <ImageView
+    <View
         android:layout_width="300dp"
         android:layout_height="1dp"
-        android:src="@drawable/line_long"
+        android:background="#B9B9B9"
         android:layout_gravity="center_horizontal"/>
 
 <!--    Feedback-->
@@ -156,15 +236,15 @@
                 />
         </LinearLayout>
     </LinearLayout>
-    <ImageView
+    <View
         android:layout_width="300dp"
         android:layout_height="1dp"
-        android:src="@drawable/line_long"
+        android:background="#B9B9B9"
         android:layout_gravity="center_horizontal"/>
 
-<!--    MoreApp-->
+    <!--    Rate-->
     <LinearLayout
-        android:id="@+id/layout_rate_app"
+        android:id="@+id/layout_rate"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal"
@@ -176,46 +256,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_rate"
-            android:layout_marginRight="13dp"
-            android:layout_gravity="center_vertical"
-            />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rate app"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="16sp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/tv_more1"
-                />
-        </LinearLayout>
-    </LinearLayout>
-    <ImageView
-        android:layout_width="300dp"
-        android:layout_height="1dp"
-        android:src="@drawable/line_long"
-        android:layout_gravity="center_horizontal"/>
-<!--    Privacy-->
-    <LinearLayout
-        android:id="@+id/layout_privacy"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/privacy_icon"
             android:layout_marginRight="16dp"
             android:layout_gravity="center_vertical"
             />
@@ -223,19 +263,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tv_privacy"
-                android:textStyle="bold"
+                android:text="@string/tv_rate"
                 android:textColor="@color/black"
-                android:textSize="16sp"/>
+                android:textSize="16sp"
+                android:textStyle="bold" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/tv_privacy1"
+                android:text="@string/tv_rate1"
                 />
         </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>

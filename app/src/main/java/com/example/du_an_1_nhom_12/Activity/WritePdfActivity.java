@@ -1,14 +1,16 @@
-package com.example.du_an_1_nhom_12;
+package com.example.du_an_1_nhom_12.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MainActivity5 extends AppCompatActivity {
+import com.example.du_an_1_nhom_12.R;
+
+public class WritePdfActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main5);
+        setContentView(R.layout.activity_write_pdf);
     }
 }

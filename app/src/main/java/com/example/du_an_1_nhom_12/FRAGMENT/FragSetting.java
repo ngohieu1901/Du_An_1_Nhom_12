@@ -19,12 +19,16 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.du_an_1_nhom_12.Activity.FeedbackActivity;
 import com.example.du_an_1_nhom_12.Activity.RateAppActivity;
+import com.example.du_an_1_nhom_12.Activity.ScanPdfActivity;
+import com.example.du_an_1_nhom_12.Activity.WritePdfActivity;
 import com.example.du_an_1_nhom_12.BuildConfig;
 import com.example.du_an_1_nhom_12.R;
+import com.example.du_an_1_nhom_12.SUPPORT.OnSingleClickListener;
 
 
 public class FragSetting extends Fragment {
-    LinearLayout layout_feedback, layout_lang, layout_share,layout_rate_app;
+    public boolean isActivityOpen = false;
+    LinearLayout layout_feedback, layout_lang, layout_share,layout_rate_app,layout_scan,layout_write;
     boolean isSelected = false;
     @Nullable
     @Override
@@ -36,17 +40,17 @@ public class FragSetting extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         layout_feedback = view.findViewById(R.id.layout_feedback);
-        layout_feedback.setOnClickListener(new View.OnClickListener() {
+        layout_feedback.setOnClickListener(new OnSingleClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onSingleClick(View view) {
                 startActivity(new Intent(getActivity(), FeedbackActivity.class));
             }
         });
 
         layout_lang = view.findViewById(R.id.layout_lang);
-        layout_lang.setOnClickListener(new View.OnClickListener() {
+        layout_lang.setOnClickListener(new OnSingleClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onSingleClick(View view) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 FragLanguage fragLanguage = new FragLanguage();
                 fm.beginTransaction().replace(R.id.frag_container_file,fragLanguage).commit();
@@ -54,41 +58,49 @@ public class FragSetting extends Fragment {
         });
 
         layout_share = view.findViewById(R.id.layout_share);
-        layout_share.setOnClickListener(new View.OnClickListener() {
+        layout_share.setOnClickListener(new OnSingleClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onSingleClick(View view) {
                 try {
-                    if (!isSelected) {
-                        isSelected = true;
-                        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                        shareIntent.setType("text/plain");
-                        shareIntent.putExtra(Intent.EXTRA_SUBJECT, "File Manager");
-                        String shareMessage = "\n\n" + "File management application\n";
-                        shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=com.microsoft.office.excel&pcampaignid=web_share" + BuildConfig.APPLICATION_ID + "\n\n";
-                        shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
-                        startActivity(Intent.createChooser(shareIntent, "Choose one"));
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                isSelected = false;
-                            }
-                        }, 1000);
-                    }
-                } catch(Exception e) {
+                    Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                    shareIntent.setType("text/plain");
+                    shareIntent.putExtra(Intent.EXTRA_SUBJECT, "File Manager");
+                    String shareMessage = "\n\n" + "File management application\n";
+                    shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=com.microsoft.office.excel&pcampaignid=web_share" + BuildConfig.APPLICATION_ID + "\n\n";
+                    shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+                    startActivity(Intent.createChooser(shareIntent, "Choose one"));
+                }catch (Exception e){
                     e.printStackTrace();
                 }
             }
         });
 
-        layout_rate_app = view.findViewById(R.id.layout_rate_app);
-        layout_rate_app.setOnClickListener(new View.OnClickListener() {
+        layout_rate_app = view.findViewById(R.id.layout_rate);
+        layout_rate_app.setOnClickListener(new OnSingleClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onSingleClick(View view) {
                 startActivity(new Intent(getActivity(), RateAppActivity.class));
+            }
+        });
+
+        layout_scan = view.findViewById(R.id.layout_scan);
+        layout_scan.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View view) {
+                startActivity(new Intent(getActivity(), ScanPdfActivity.class));
+            }
+        });
+
+        layout_write = view.findViewById(R.id.layout_write);
+        layout_write.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View view) {
+                startActivity(new Intent(getActivity(), WritePdfActivity.class));
             }
         });
     }
 
+//SHARE FILE
 //    Intent intent = new Intent(Intent.ACTION_SEND);
 //    intent.setType("application/pdf");
 //    File pdfFile = new File("/path/to/your/pdf/file.pdf");

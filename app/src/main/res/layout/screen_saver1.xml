@@ -8,7 +8,7 @@
     <ImageView
         android:layout_width="322dp"
         android:layout_height="273dp"
-        android:src="@drawable/iconscv1"
+        android:src="@drawable/pager_1"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="50dp"/>
     <TextView

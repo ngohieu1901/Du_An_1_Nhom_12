@@ -6,7 +6,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="#217346"
+        android:background="#CD3527"
         android:text="@string/tv_feedback"
         android:textSize="25sp"
         android:textColor="@color/white"
@@ -31,7 +31,7 @@
         android:hint="@string/ed_dialog_feedback"
         android:paddingLeft="25dp"
         android:paddingBottom="40dp"
-        android:textColorHint="#217346"/>
+        android:textColorHint="#CD3527"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -58,7 +58,7 @@
             android:text="@string/btn_send"
             android:textColor="@color/white"
             android:background="@drawable/border_menu"
-            android:backgroundTint="#217346"
+            android:backgroundTint="#CD3527"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"/>
     </LinearLayout>

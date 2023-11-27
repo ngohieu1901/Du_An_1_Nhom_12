@@ -3,5 +3,5 @@
     <item android:color="#D4D0D0" android:state_checked="false" />
 
     <!-- Màu sắc cho trạng thái đã chọn -->
-    <item android:color="#217346" android:state_checked="true" />
+    <item android:color="#CD3527" android:state_checked="true" />
 </selector>
