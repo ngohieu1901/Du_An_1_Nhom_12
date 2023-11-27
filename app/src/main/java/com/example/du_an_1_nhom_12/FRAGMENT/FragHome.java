@@ -266,15 +266,16 @@ public class FragHome extends Fragment  {
                     String fileName = file.getName();
                     String dateModified = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(file.lastModified()));
 //                 Thêm một đối tượng FileItem vào danh sách
-                    if (file.getName().endsWith(".pptx")) {
-                        list.add(new AllFileDTO(R.drawable.ppt_icon, fileName, dateModified, filePath, 0));
-                    } else if (file.getName().endsWith(".docx")) {
-                        list.add(new AllFileDTO(R.drawable.word_icon, fileName, dateModified, filePath, 0));
-                    } else if (file.getName().endsWith(".txt")) {
-                        list.add(new AllFileDTO(R.drawable.txt_icon, fileName, dateModified, filePath, 0));
-                    } else if (file.getName().endsWith(".xlsx")) {
-                        list.add(new AllFileDTO(R.drawable.excel_icon, fileName, dateModified, filePath, 0));
-                    } else if (file.getName().endsWith(".pdf")) {
+//                    if (file.getName().endsWith(".pptx")) {
+//                        list.add(new AllFileDTO(R.drawable.ppt_icon, fileName, dateModified, filePath, 0));
+//                    } else if (file.getName().endsWith(".docx")) {
+//                        list.add(new AllFileDTO(R.drawable.word_icon, fileName, dateModified, filePath, 0));
+//                    } else if (file.getName().endsWith(".txt")) {
+//                        list.add(new AllFileDTO(R.drawable.txt_icon, fileName, dateModified, filePath, 0));
+//                    } else if (file.getName().endsWith(".xlsx")) {
+//                        list.add(new AllFileDTO(R.drawable.excel_icon, fileName, dateModified, filePath, 0));
+//                    } else
+                        if (file.getName().endsWith(".pdf")) {
                         list.add(new AllFileDTO(R.drawable.icon_ppt2, fileName, dateModified, filePath, 0));
                     }
                 }

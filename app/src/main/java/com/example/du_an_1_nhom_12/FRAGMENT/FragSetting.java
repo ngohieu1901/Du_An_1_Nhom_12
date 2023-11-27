@@ -24,12 +24,9 @@ import com.example.du_an_1_nhom_12.Activity.WritePdfActivity;
 import com.example.du_an_1_nhom_12.BuildConfig;
 import com.example.du_an_1_nhom_12.R;
 import com.example.du_an_1_nhom_12.SUPPORT.OnSingleClickListener;
-
-
 public class FragSetting extends Fragment {
     public boolean isActivityOpen = false;
     LinearLayout layout_feedback, layout_lang, layout_share,layout_rate_app,layout_scan,layout_write;
-    boolean isSelected = false;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
