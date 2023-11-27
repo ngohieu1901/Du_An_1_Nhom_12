@@ -5,4 +5,5 @@
     <color name="status_pdf"> #DD383E</color>
     <color name="main_file">#CD3527</color>
     <color name="language" > #CD3527 </color>
+    <color name="bg_progress"> #4DCD3527 </color>
 </resources>

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".Activity.MainActivity">
 
@@ -36,9 +37,10 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:indeterminate="true"
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
-        android:progressDrawable="@drawable/progressbar_custom"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/language"
         />
 </LinearLayout>

@@ -2,13 +2,18 @@ package com.example.du_an_1_nhom_12.Activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
 import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.core.content.ContextCompat;
 
 import com.example.du_an_1_nhom_12.R;
 
@@ -25,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         boolean started = preferences.getBoolean("started",false);
         boolean permission = preferences.getBoolean("permission",false);
         progressBar = findViewById(R.id.loading_bar);
+
 
         CountDownTimer countDownTimer = new CountDownTimer(2000,1000) {
             @Override
