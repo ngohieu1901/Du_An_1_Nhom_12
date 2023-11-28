@@ -208,6 +208,7 @@ public class FragBookmark extends Fragment {
 
         search_file = view.findViewById(R.id.search_file_bm);
         iv_clear = view.findViewById(R.id.iv_clear);
+
         search_file.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

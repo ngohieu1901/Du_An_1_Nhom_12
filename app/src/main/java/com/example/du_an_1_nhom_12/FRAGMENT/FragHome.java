@@ -72,6 +72,7 @@ public class FragHome extends Fragment  {
             list = loadFiles();
             saveFile(list);
         }
+
         adapter = new HomeADAPTER(getContext(), list);
         adapter.notifyDataSetChanged();
         rc_file = view.findViewById(R.id.rc_file);
@@ -85,7 +86,10 @@ public class FragHome extends Fragment  {
         search_file.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    imm.hideSoftInputFromWindow(search_file.getWindowToken(), 0);
+                }
             }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -99,7 +103,6 @@ public class FragHome extends Fragment  {
                     search_file.clearFocus();
                 }else {
                     iv_clear.setVisibility(View.VISIBLE);
-
                 }
             }
             @Override

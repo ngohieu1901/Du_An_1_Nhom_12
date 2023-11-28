@@ -1,281 +1,328 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:orientation="vertical">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:layout_marginBottom="20dp"
         android:background="#CD3527"
-        android:text="@string/setting_frag"
-        android:textSize="31sp"
-        android:textColor="@color/white"
-        android:textStyle="bold"
         android:gravity="center"
-        android:layout_marginBottom="20dp"/>
+        android:text="@string/setting_frag"
+        android:textColor="@color/white"
+        android:textSize="31sp"
+        android:textStyle="bold" />
+
     <ImageView
         android:layout_width="110dp"
         android:layout_height="117dp"
-        android:src="@drawable/logo_app"
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:text="@string/tv_xlsx"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="10dp"/>
+        android:src="@drawable/logo_app" />
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="5dp">
+
+        <TextView
+            android:id="@+id/xlsx_reader"
+            android:layout_width="wrap_content"
+            android:layout_height="27dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="1.8dp"
+            android:layout_marginTop="1.8dp"
+            android:text="@string/tv_xlsx"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/xlsx_reader1"
+            android:layout_width="wrap_content"
+            android:layout_height="27dp"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/tv_xlsx"
+            android:textColor="@color/language"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </FrameLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:gravity="center"
         android:text="@string/tv_version"
-        android:textSize="13sp"
-        android:layout_marginBottom="5dp"/>
-    <!--   Scan-->
-    <LinearLayout
-        android:id="@+id/layout_scan"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp">
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="26dp"
-            android:src="@drawable/ic_scan"
-            android:layout_marginRight="13dp"
-            android:layout_gravity="center_vertical"
-            />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tv_scan"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="16sp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/tv_scan1"
-                />
-        </LinearLayout>
-    </LinearLayout>
-    <View
-        android:layout_width="300dp"
-        android:layout_height="1dp"
-        android:background="#B9B9B9"
-        android:layout_gravity="center_horizontal"/>
-    <!--    Write PDF-->
-    <LinearLayout
-        android:id="@+id/layout_write"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp">
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="28dp"
-            android:src="@drawable/ic_write"
-            android:layout_marginRight="16dp"
-            android:layout_gravity="center_vertical"
-            />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tv_write"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="16sp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/tv_write1"
-                />
-        </LinearLayout>
-    </LinearLayout>
-    <View
-        android:layout_width="300dp"
-        android:layout_height="1dp"
-        android:background="#B9B9B9"
-        android:layout_gravity="center_horizontal"/>
-    <LinearLayout
-        android:id="@+id/layout_lang"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon_lang"
-            android:layout_marginRight="16dp"
-            android:layout_gravity="center_vertical"
-            />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tv_lang"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="16sp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/tv_lang1"
-                />
-        </LinearLayout>
-    </LinearLayout>
-    <View
-        android:layout_width="300dp"
-        android:layout_height="1dp"
-        android:background="#B9B9B9"
-        android:layout_gravity="center_horizontal"/>
+        android:textSize="13sp" />
 
-<!--Share-->
-    <LinearLayout
-        android:id="@+id/layout_share"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/share_icon"
-            android:layout_marginRight="16dp"
-            android:layout_gravity="center_vertical"
-            />
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tv_share"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="16sp"/>
-            <TextView
+            android:orientation="vertical"
+            >
+            <!--   Scan-->
+            <LinearLayout
+                android:id="@+id/layout_scan"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/tv_share1"
-                />
-        </LinearLayout>
-    </LinearLayout>
-    <View
-        android:layout_width="300dp"
-        android:layout_height="1dp"
-        android:background="#B9B9B9"
-        android:layout_gravity="center_horizontal"/>
+                android:layout_height="40dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
 
-<!--    Feedback-->
-    <LinearLayout
-        android:id="@+id/layout_feedback"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/feedback_icon"
-            android:layout_marginRight="16dp"
-            android:layout_gravity="center_vertical"
-            />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="26dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="13dp"
+                    android:src="@drawable/ic_scan" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tv_feedback"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-            <TextView
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_scan"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/tv_scan1" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="300dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center_horizontal"
+                android:background="#B9B9B9" />
+            <!--    Write PDF-->
+            <LinearLayout
+                android:id="@+id/layout_write"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/tv_feedback1"
-                />
-        </LinearLayout>
-    </LinearLayout>
-    <View
-        android:layout_width="300dp"
-        android:layout_height="1dp"
-        android:background="#B9B9B9"
-        android:layout_gravity="center_horizontal"/>
+                android:layout_height="40dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
 
-    <!--    Rate-->
-    <LinearLayout
-        android:id="@+id/layout_rate"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_rate"
-            android:layout_marginRight="16dp"
-            android:layout_gravity="center_vertical"
-            />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/ic_write" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tv_rate"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-            <TextView
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_write"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/tv_write1" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="300dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center_horizontal"
+                android:background="#B9B9B9" />
+
+            <LinearLayout
+                android:id="@+id/layout_lang"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/tv_rate1"
-                />
+                android:layout_height="40dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/icon_lang" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_lang"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/tv_lang1" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="300dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center_horizontal"
+                android:background="#B9B9B9" />
+
+            <!--Share-->
+            <LinearLayout
+                android:id="@+id/layout_share"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/share_icon" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_share"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/tv_share1" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="300dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center_horizontal"
+                android:background="#B9B9B9" />
+
+            <!--    Feedback-->
+            <LinearLayout
+                android:id="@+id/layout_feedback"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/feedback_icon" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_feedback"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/tv_feedback1" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="300dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center_horizontal"
+                android:background="#B9B9B9" />
+
+            <!--    Rate-->
+            <LinearLayout
+                android:id="@+id/layout_rate"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/ic_rate" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_rate"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/tv_rate1" />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 </LinearLayout>
