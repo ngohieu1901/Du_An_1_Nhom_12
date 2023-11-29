@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -25,6 +26,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.du_an_1_nhom_12.ADAPTER.BookmarkADAPTER;
 import com.example.du_an_1_nhom_12.DATABASE.FileDATABASE;
@@ -36,7 +38,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class FragBookmark extends Fragment {
+public class FragBookmark extends Fragment  {
     LinearLayout layoutAZ,layoutZA;
     RecyclerView rc_bookmark;
     BookmarkADAPTER adapter;
@@ -47,6 +49,7 @@ public class FragBookmark extends Fragment {
     int sortState = 0;
     private static final String SAVE_INT = "SAVE_INT";
     private static final String INT_VALUE = "INT_VALUE";
+    private SwipeRefreshLayout srl_bookmark;
 
 
     private void saveInt(int value){
@@ -66,7 +69,6 @@ public class FragBookmark extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.frag_bookmark,container,false);
-
     }
 
     @Override
@@ -245,6 +247,7 @@ public class FragBookmark extends Fragment {
         });
 
     }
+
     public class NameComparator implements Comparator<AllFileDTO> {
         @Override
         public int compare(AllFileDTO o1, AllFileDTO o2) {

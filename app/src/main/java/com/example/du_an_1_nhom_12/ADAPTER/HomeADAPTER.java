@@ -51,6 +51,11 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
         this.list_file_old = list;
     }
 
+    public void setData(ArrayList<AllFileDTO> list){
+        this.list_home = list;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

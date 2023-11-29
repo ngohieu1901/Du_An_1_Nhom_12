@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -26,6 +27,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 
 import com.example.du_an_1_nhom_12.ADAPTER.HomeADAPTER;
@@ -43,7 +45,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 
-public class FragHome extends Fragment  {
+public class FragHome extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     RecyclerView rc_file;
     HomeADAPTER adapter;
@@ -51,6 +53,7 @@ public class FragHome extends Fragment  {
     ImageView iv_clear;
     ImageButton sortFile;
     LinearLayout layoutAZ, layoutZA;
+    SwipeRefreshLayout srl_home;
     ArrayList<AllFileDTO> list = new ArrayList<>();
     String TAG = "ok";
 
@@ -63,10 +66,11 @@ public class FragHome extends Fragment  {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        srl_home = (SwipeRefreshLayout) view.findViewById(R.id.srl_home);
+        srl_home.setOnRefreshListener(this);
         //save phần tử trong dialog
         SharedPreferences preferences = getActivity().getSharedPreferences("SAVE_DIALOG_HOME", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-
         list = readFile();
         if (list.size() == 0) {
             list = loadFiles();
@@ -91,6 +95,7 @@ public class FragHome extends Fragment  {
                     imm.hideSoftInputFromWindow(search_file.getWindowToken(), 0);
                 }
             }
+
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 adapter.getFilter().filter(s);
@@ -101,10 +106,11 @@ public class FragHome extends Fragment  {
                         imm.hideSoftInputFromWindow(search_file.getWindowToken(), 0);
                     }
                     search_file.clearFocus();
-                }else {
+                } else {
                     iv_clear.setVisibility(View.VISIBLE);
                 }
             }
+
             @Override
             public void afterTextChanged(Editable s) {
 
@@ -125,9 +131,10 @@ public class FragHome extends Fragment  {
         sortFile = view.findViewById(R.id.sort_file_home);
         sortFile.setOnClickListener(new View.OnClickListener() {
             boolean isChecked = false;
+
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),R.style.BorderDialogTheme);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.BorderDialogTheme);
                 View view = getLayoutInflater().inflate(R.layout.dialog_sort, null, false);
                 builder.setView(view);
                 Dialog dialog = builder.create();
@@ -234,6 +241,40 @@ public class FragHome extends Fragment  {
         }
     }
 
+    @Override
+    public void onRefresh() {
+        Toast.makeText(getContext(), "Refresh", Toast.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ArrayList<AllFileDTO> existingList = readFile(); // Đọc danh sách file đã có từ FileInputStream
+                ArrayList<AllFileDTO> newList = loadFiles(); // Tải danh sách file mới từ thiết bị
+
+                // Kiểm tra từng file trong danh sách mới tải về
+                for (AllFileDTO newFile : newList) {
+                    boolean fileExists = false;
+                    // So sánh đường dẫn của file mới với danh sách file đã có
+                    for (AllFileDTO existingFile : existingList) {
+                        if (newFile.getPath().equals(existingFile.getPath())) {
+                            fileExists = true;
+                            break; // File đã tồn tại trong danh sách, không cần thêm vào lại
+                        }
+                    }
+                    // Nếu file không tồn tại trong danh sách cũ, thêm nó vào danh sách
+                    if (!fileExists) {
+                        existingList.add(newFile);
+                        Log.d("zzzzz","file: "+newFile.getTen());
+                    }
+                }
+                // Lưu danh sách mới vào FileInputStream
+                saveFile(existingList);
+                list = readFile();
+                adapter.setData(list);
+                srl_home.setRefreshing(false);
+            }
+        }, 2000);
+    }
+
     public ArrayList readFile() {
         ArrayList<AllFileDTO> list = new ArrayList<>();
         try {
@@ -246,12 +287,6 @@ public class FragHome extends Fragment  {
             Log.e(TAG, "Read: ", e);
         }
         return list;
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.d(TAG, "onDestroy: ");
     }
 
     private ArrayList<AllFileDTO> loadFiles() {
@@ -268,17 +303,7 @@ public class FragHome extends Fragment  {
                     Log.d("Files", "File path: " + filePath);
                     String fileName = file.getName();
                     String dateModified = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(file.lastModified()));
-//                 Thêm một đối tượng FileItem vào danh sách
-//                    if (file.getName().endsWith(".pptx")) {
-//                        list.add(new AllFileDTO(R.drawable.ppt_icon, fileName, dateModified, filePath, 0));
-//                    } else if (file.getName().endsWith(".docx")) {
-//                        list.add(new AllFileDTO(R.drawable.word_icon, fileName, dateModified, filePath, 0));
-//                    } else if (file.getName().endsWith(".txt")) {
-//                        list.add(new AllFileDTO(R.drawable.txt_icon, fileName, dateModified, filePath, 0));
-//                    } else if (file.getName().endsWith(".xlsx")) {
-//                        list.add(new AllFileDTO(R.drawable.excel_icon, fileName, dateModified, filePath, 0));
-//                    } else
-                        if (file.getName().endsWith(".pdf")) {
+                    if (file.getName().endsWith(".pdf")) {
                         list.add(new AllFileDTO(R.drawable.icon_ppt2, fileName, dateModified, filePath, 0));
                     }
                 }
@@ -286,7 +311,11 @@ public class FragHome extends Fragment  {
         }
         return list;
     }
-    
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy: ");
+    }
 }
 
