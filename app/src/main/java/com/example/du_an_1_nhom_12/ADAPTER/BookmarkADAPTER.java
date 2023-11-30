@@ -17,7 +17,9 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +31,7 @@ import com.example.du_an_1_nhom_12.Activity.PdfViewActivity;
 import com.example.du_an_1_nhom_12.DATABASE.FileDATABASE;
 import com.example.du_an_1_nhom_12.DTO.AllFileDTO;
 import com.example.du_an_1_nhom_12.R;
+import com.example.du_an_1_nhom_12.SUPPORT.OnSingleClickListener;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -38,6 +41,7 @@ public class BookmarkADAPTER extends RecyclerView.Adapter<BookmarkADAPTER.ViewHo
     ArrayList<AllFileDTO> list_bookmark,list_home,list_file_old;
     HomeADAPTER adapter;
     boolean isActivityOpen = false;
+    PopupWindow popupWindow;
     public BookmarkADAPTER(Context context, ArrayList<AllFileDTO> list) {
         this.context = context;
         this.list_bookmark = list;
@@ -63,12 +67,12 @@ public class BookmarkADAPTER extends RecyclerView.Adapter<BookmarkADAPTER.ViewHo
         if (allFileDTO.getBookmark() == 0) {
             holder.bookmark_file.setImageResource(R.drawable.star);
         } else {
-            holder.bookmark_file.setImageResource(R.drawable.star_gold);
+            holder.bookmark_file.setImageResource(R.drawable.ic_star_gold);
         }
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new OnSingleClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onSingleClick(View view) {
                 if (!isActivityOpen) {
                     isActivityOpen = true;
                     String path = list_bookmark.get(position).getPath();
@@ -87,11 +91,188 @@ public class BookmarkADAPTER extends RecyclerView.Adapter<BookmarkADAPTER.ViewHo
             }
         });
 
-        holder.menu_custom.setOnClickListener(new View.OnClickListener() {
+        holder.menu_custom.setOnClickListener(new OnSingleClickListener() {
             @Override
-            public void onClick(View v) {
-                showPopupMenu(holder.menu_custom);
+            public void onSingleClick(View view) {
+//                showPopupMenu(holder.menu_custom);
+                setPopupWindow();
+                popupWindow.showAsDropDown(view,-20,0);
             }
+            public void setPopupWindow(){
+                LayoutInflater inflater = (LayoutInflater)context.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View view = inflater.inflate(R.layout.menu_popup, null);
+                LinearLayout lnRename = view.findViewById(R.id.layout_rename);
+                LinearLayout lnBookmark = view.findViewById(R.id.layout_bookmark);
+                LinearLayout lnShare = view.findViewById(R.id.layout_menu_share);
+                LinearLayout lnDelete = view.findViewById(R.id.layout_delete);
+                ImageView ivStarMenu = view.findViewById(R.id.iv_star_menu);
+//UPDATEEEEEEEEEEEEEEEEEE
+                lnRename.setOnClickListener(new OnSingleClickListener() {
+                    @Override
+                    public void onSingleClick(View view) {
+                        popupWindow.dismiss();
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                        LayoutInflater inflater = ((Activity) context).getLayoutInflater();
+                        View v = inflater.inflate(R.layout.dialog_rename, null);
+                        builder.setView(v);
+                        Dialog dialog = builder.create();
+                        dialog.show();
+
+                        EditText ed_ten = v.findViewById(R.id.ed_ten);
+                        Button btn_cancel = v.findViewById(R.id.btn_cancel);
+                        Button btn_agree = v.findViewById(R.id.btn_agree);
+
+                        ed_ten.setText(allFileDTO.getTen());
+                        btn_agree.setOnClickListener(new OnSingleClickListener() {
+                            @Override
+                            public void onSingleClick(View view) {
+                                adapter = new HomeADAPTER(context,list_home);
+                                list_home = adapter.readFile();
+                                String path = list_bookmark.get(position).getPath();
+
+                                File oldFile = new File(path);
+                                Log.d("ZZZZZ","Path old: "+path);
+                                File newFile = new File("/storage/emulated/0/"+ed_ten.getText().toString());
+                                Log.d("ZZZZZ","Path new: "+ "/storage/emulated/0/"+ed_ten.getText().toString());
+
+                                if (oldFile.exists()) {
+                                    boolean success = oldFile.renameTo(new File("/storage/emulated/0/"+ed_ten.getText().toString()));
+                                    if (success) {
+                                        int posHome = 0;
+                                        for (int i = 0; i < list_home.size(); i++){
+                                            AllFileDTO fileHome = list_home.get(i);
+                                            if (fileHome.getPath().equals(path)){
+                                                posHome = i;
+                                                fileHome.setTen(ed_ten.getText().toString());
+                                                fileHome.setPath("/storage/emulated/0/"+ed_ten.getText().toString());
+                                                list_home.set(posHome,fileHome);
+                                                adapter.saveFile(list_home);
+                                                adapter.notifyDataSetChanged();
+                                                break;
+                                            }
+                                        }
+                                        allFileDTO.setTen(ed_ten.getText().toString());
+                                        allFileDTO.setPath("/storage/emulated/0/"+ed_ten.getText().toString());
+                                        FileDATABASE.getInstance(context).fileDAO().updateFile(allFileDTO);
+                                        loadFile();
+                                        Toast.makeText(context, context.getString(R.string.toast_rename), Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(context, context.getString(R.string.toast_failed), Toast.LENGTH_SHORT).show();
+                                    }
+                                } else {
+                                    Toast.makeText(context, context.getString(R.string.toast_exists), Toast.LENGTH_SHORT).show();
+                                }
+                                dialog.dismiss();
+                            }
+                        });
+
+                        btn_cancel.setOnClickListener(new OnSingleClickListener() {
+                            @Override
+                            public void onSingleClick(View view) {
+                                dialog.dismiss();
+                            }
+                        });
+                    }
+                });
+//BOOKMARKKKKKKKKKKKKKK
+                lnBookmark.setOnClickListener(new OnSingleClickListener() {
+                    @Override
+                    public void onSingleClick(View view) {
+                        popupWindow.dismiss();
+
+                        adapter = new HomeADAPTER(context,list_home);
+                        list_home = adapter.readFile();
+                        String path = list_bookmark.get(position).getPath();
+
+                        int posHome = 0;
+                        for (int i = 0; i < list_home.size(); i++){
+                            AllFileDTO fileHome = list_home.get(i);
+                            if (fileHome.getPath().equals(path)){
+                                posHome = i;
+                                fileHome.setBookmark(0);
+                                list_home.set(posHome,fileHome);
+                                adapter.saveFile(list_home);
+                                break;
+                            }
+                        }
+
+                        list_bookmark.remove(position);
+                        FileDATABASE.getInstance(context).fileDAO().deleteByPath(path);
+                        loadFile();
+                        Toast.makeText(context, context.getString(R.string.toast_bookmark), Toast.LENGTH_SHORT).show();
+                    }
+                });
+//DELETEEEEEEEEEEEEEEEEEE
+                lnDelete.setOnClickListener(new OnSingleClickListener() {
+                    @Override
+                    public void onSingleClick(View view) {
+                        popupWindow.dismiss();
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                        LayoutInflater inflater = ((Activity) context).getLayoutInflater();
+                        View v = inflater.inflate(R.layout.dialog_delete, null);
+                        builder.setView(v);
+                        Dialog dialog = builder.create();
+                        dialog.show();
+                        Button btn_delete = v.findViewById(R.id.btn_delete);
+                        Button btn_cancel = v.findViewById(R.id.btn_cancel);
+                        btn_delete.setOnClickListener(new OnSingleClickListener() {
+                            @Override
+                            public void onSingleClick(View view) {
+                                adapter = new HomeADAPTER(context,list_home);
+                                list_home = adapter.readFile();
+                                String path = list_bookmark.get(position).getPath();
+
+                                File file = new File(path);
+                                if (file.exists()) {
+                                    Log.d("ZZZZZ", "Path: " + file.getAbsolutePath());
+                                    if (file.delete()) {
+                                        int posHome = 0;
+                                        for (int i = 0; i < list_home.size(); i++){
+                                            AllFileDTO fileHome = list_home.get(i);
+                                            if (fileHome.getPath().equals(path)){
+                                                posHome = i;
+                                                list_home.remove(posHome);
+                                                adapter.saveFile(list_home);
+                                                break;
+                                            }
+                                        }
+                                        list_bookmark.remove(position);
+                                        FileDATABASE.getInstance(context).fileDAO().deleteByPath(path);
+                                        loadFile();
+                                        Toast.makeText(context, context.getString(R.string.toast_delete), Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        context.deleteFile(file.getName());
+                                        Toast.makeText(context, context.getString(R.string.toast_failed), Toast.LENGTH_SHORT).show();
+                                    }
+                                } else {
+                                    Toast.makeText(context, context.getString(R.string.toast_exists), Toast.LENGTH_SHORT).show();
+                                }
+
+                                dialog.dismiss();
+                            }
+                        });
+                        btn_cancel.setOnClickListener(new OnSingleClickListener() {
+                            @Override
+                            public void onSingleClick(View view) {
+                                dialog.dismiss();
+                            }
+                        });
+                    }
+                });
+
+                lnShare.setOnClickListener(new OnSingleClickListener() {
+                    @Override
+                    public void onSingleClick(View view) {
+                        popupWindow.dismiss();
+
+
+                    }
+                });
+                popupWindow = new PopupWindow(view,300,LinearLayout.LayoutParams.WRAP_CONTENT,true);
+            }
+
             private void showPopupMenu(View view) {
                 PopupMenu popupMenu = new PopupMenu(context, view);
                 popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
@@ -112,9 +293,9 @@ public class BookmarkADAPTER extends RecyclerView.Adapter<BookmarkADAPTER.ViewHo
 
                             ed_ten.setText(allFileDTO.getTen());
 //UPDATE
-                            btn_agree.setOnClickListener(new View.OnClickListener() {
+                            btn_agree.setOnClickListener(new OnSingleClickListener() {
                                 @Override
-                                public void onClick(View v) {
+                                public void onSingleClick(View view) {
                                     adapter = new HomeADAPTER(context,list_home);
                                     list_home = adapter.readFile();
                                     String path = list_bookmark.get(position).getPath();
@@ -156,9 +337,9 @@ public class BookmarkADAPTER extends RecyclerView.Adapter<BookmarkADAPTER.ViewHo
                                 }
                             });
 
-                            btn_cancel.setOnClickListener(new View.OnClickListener() {
+                            btn_cancel.setOnClickListener(new OnSingleClickListener() {
                                 @Override
-                                public void onClick(View v) {
+                                public void onSingleClick(View view) {
                                     dialog.dismiss();
                                 }
                             });
@@ -195,9 +376,9 @@ public class BookmarkADAPTER extends RecyclerView.Adapter<BookmarkADAPTER.ViewHo
                             Button btn_delete = v.findViewById(R.id.btn_delete);
                             Button btn_cancel = v.findViewById(R.id.btn_cancel);
 //DELETE
-                            btn_delete.setOnClickListener(new View.OnClickListener() {
+                            btn_delete.setOnClickListener(new OnSingleClickListener() {
                                 @Override
-                                public void onClick(View v) {
+                                public void onSingleClick(View view) {
                                     adapter = new HomeADAPTER(context,list_home);
                                     list_home = adapter.readFile();
                                     String path = list_bookmark.get(position).getPath();
@@ -231,9 +412,9 @@ public class BookmarkADAPTER extends RecyclerView.Adapter<BookmarkADAPTER.ViewHo
                                     dialog.dismiss();
                                 }
                             });
-                            btn_cancel.setOnClickListener(new View.OnClickListener() {
+                            btn_cancel.setOnClickListener(new OnSingleClickListener() {
                                 @Override
-                                public void onClick(View v) {
+                                public void onSingleClick(View view) {
                                     dialog.dismiss();
                                 }
                             });
@@ -246,10 +427,10 @@ public class BookmarkADAPTER extends RecyclerView.Adapter<BookmarkADAPTER.ViewHo
                 popupMenu.show();
             }
         });
-//BOOKMARK
-        holder.bookmark_file.setOnClickListener(new View.OnClickListener() {
+
+        holder.bookmark_file.setOnClickListener(new OnSingleClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onSingleClick(View view) {
                 adapter = new HomeADAPTER(context,list_home);
                 list_home = adapter.readFile();
                 String path = list_bookmark.get(position).getPath();

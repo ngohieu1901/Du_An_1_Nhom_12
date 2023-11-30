@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="80dp"
     android:gravity="center_vertical"
-    android:paddingLeft="16dp">
+    android:paddingLeft="16dp"
+    android:paddingRight="10dp">
 <ImageView
     android:layout_width="35dp"
     android:layout_height="40dp"
@@ -39,10 +40,9 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"/>
     <LinearLayout
-        android:layout_width="60dp"
+        android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:orientation="horizontal"
-        android:layout_marginRight="16dp"
         android:gravity="center_vertical"
         >
         <ImageView
@@ -53,7 +53,7 @@
             android:src="@drawable/star"
             />
         <ImageButton
-            android:layout_width="30dp"
+            android:layout_width="35dp"
             android:layout_height="35dp"
             android:id="@+id/menu_custom"
             android:background="#00000000"

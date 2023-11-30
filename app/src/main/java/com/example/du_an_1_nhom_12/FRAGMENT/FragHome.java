@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,6 +57,7 @@ public class FragHome extends Fragment implements SwipeRefreshLayout.OnRefreshLi
     SwipeRefreshLayout srl_home;
     ArrayList<AllFileDTO> list = new ArrayList<>();
     String TAG = "ok";
+    PopupWindow popupWindow;
 
     @Nullable
     @Override
