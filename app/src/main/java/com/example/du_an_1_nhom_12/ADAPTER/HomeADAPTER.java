@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,6 +28,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.du_an_1_nhom_12.Activity.PdfViewActivity;
@@ -116,7 +118,7 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
             public void onSingleClick(View view) {
                 // showPopupMenu(holder.menu_custom);
                 setPopupWindow();
-                popupWindow.showAsDropDown(view,-20,0);
+                popupWindow.showAsDropDown(view,-50,0);
             }
             public void setPopupWindow(){
                 LayoutInflater inflater = (LayoutInflater)
@@ -282,10 +284,17 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
                     @Override
                     public void onSingleClick(View view) {
                         popupWindow.dismiss();
+                        Intent intent = new Intent(Intent.ACTION_SEND);
+                        intent.setType("application/pdf");
+                        File pdfFile = new File(allFileDTO.getPath());
+                        Uri pdfUri = FileProvider.getUriForFile(context, context.getPackageName() + ".fileprovider", pdfFile);
+                        intent.putExtra(Intent.EXTRA_STREAM, pdfUri);
+                        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // Để cấp quyền đọc cho ứng dụng khác
+                        context.startActivity(Intent.createChooser(intent, "Chia sẻ tài liệu PDF"));
 
                     }
                 });
-                popupWindow = new PopupWindow(view,300,LinearLayout.LayoutParams.WRAP_CONTENT,true);
+                popupWindow = new PopupWindow(view,500,LinearLayout.LayoutParams.WRAP_CONTENT,true);
             }
 
             private void showPopupMenu(View view) {
