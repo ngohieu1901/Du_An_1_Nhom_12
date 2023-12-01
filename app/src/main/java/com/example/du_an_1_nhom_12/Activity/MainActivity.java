@@ -1,5 +1,6 @@
 package com.example.du_an_1_nhom_12.Activity;
 
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
@@ -13,6 +14,8 @@ import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.du_an_1_nhom_12.R;
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 if (lang_selected){
+                    showNotification();
                     //dc chon
                     Intent intent = new Intent(MainActivity.this,MainViewPager.class);
                     startActivity(intent);
@@ -81,5 +85,21 @@ public class MainActivity extends AppCompatActivity {
             }
         }.start();
     }
-
+    private void showNotification(){
+        // toạ intent cho activity
+        Intent notificationItent = new Intent(this,HuongDanActivity.class );
+        notificationItent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,0,notificationItent,0);
+        //xây dựng thông báo
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this,"channel_id")
+                .setSmallIcon(R.drawable.more_icon)
+                .setContentTitle("Thông báo")
+                .setContentText("Nhấp vào để mở")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true);
+        // hiển thị thông báo
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        notificationManager.notify(1 , builder.build());
+    }
 }
