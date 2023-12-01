@@ -21,6 +21,7 @@ import com.example.du_an_1_nhom_12.FRAGMENT.FragBookmark;
 import com.example.du_an_1_nhom_12.FRAGMENT.FragHome;
 import com.example.du_an_1_nhom_12.FRAGMENT.FragSetting;
 import com.example.du_an_1_nhom_12.R;
+import com.example.du_an_1_nhom_12.SUPPORT.OnSingleClickListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainManageFile extends AppCompatActivity {
@@ -71,16 +72,16 @@ public class MainManageFile extends AppCompatActivity {
 
         Button btn_cancel = v.findViewById(R.id.btn_cancel2);
         Button btn_quit = v.findViewById(R.id.btn_quit);
-        btn_cancel.setOnClickListener(new View.OnClickListener() {
+        btn_cancel.setOnClickListener(new OnSingleClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onSingleClick(View view) {
                 dialog.dismiss();
             }
         });
 
-        btn_quit.setOnClickListener(new View.OnClickListener() {
+        btn_quit.setOnClickListener(new OnSingleClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onSingleClick(View view) {
                 finish();
             }
         });

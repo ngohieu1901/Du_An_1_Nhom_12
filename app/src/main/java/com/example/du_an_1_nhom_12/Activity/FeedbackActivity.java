@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.du_an_1_nhom_12.R;
+import com.example.du_an_1_nhom_12.SUPPORT.OnSingleClickListener;
 
 public class FeedbackActivity extends AppCompatActivity {
 
@@ -18,18 +19,17 @@ public class FeedbackActivity extends AppCompatActivity {
 
         Button btn_cancel = findViewById(R.id.btn_cancel1);
         Button btn_send = findViewById(R.id.btn_send);
-        btn_cancel.setOnClickListener(new View.OnClickListener() {
+        btn_cancel.setOnClickListener(new OnSingleClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onSingleClick(View view) {
                 finish();
             }
         });
 
-        btn_send.setOnClickListener(new View.OnClickListener() {
+        btn_send.setOnClickListener(new OnSingleClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onSingleClick(View view) {
                 Toast.makeText(FeedbackActivity.this, getString(R.string.toast_sent), Toast.LENGTH_SHORT).show();
-
             }
         });
     }

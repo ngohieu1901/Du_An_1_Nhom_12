@@ -12,11 +12,10 @@
         android:layout_margin="15dp"
         >
         <FrameLayout
+            android:id="@+id/frame_search"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_weight="1"
-            android:id="@+id/frame_search"
-            android:layout_marginRight="20dp">
+            android:layout_weight="1">
 
             <EditText
                 android:id="@+id/search_file_bm"
@@ -42,6 +41,7 @@
             android:layout_height="50dp"
             android:layout_gravity="end"
             android:layout_weight="0"
+            android:paddingLeft="20dp"
             android:background="#00000000"
             android:src="@drawable/sapxep" />
     </LinearLayout>

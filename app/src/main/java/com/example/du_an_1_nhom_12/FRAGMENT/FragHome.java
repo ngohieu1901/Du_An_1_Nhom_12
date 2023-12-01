@@ -34,6 +34,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.du_an_1_nhom_12.ADAPTER.HomeADAPTER;
 import com.example.du_an_1_nhom_12.DTO.AllFileDTO;
 import com.example.du_an_1_nhom_12.R;
+import com.example.du_an_1_nhom_12.SUPPORT.OnSingleClickListener;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -119,9 +120,9 @@ public class FragHome extends Fragment implements SwipeRefreshLayout.OnRefreshLi
             }
         });
 
-        iv_clear.setOnClickListener(new View.OnClickListener() {
+        iv_clear.setOnClickListener(new OnSingleClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onSingleClick(View view) {
                 search_file.setText("");
                 InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                 if (imm != null) {
@@ -130,12 +131,11 @@ public class FragHome extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                 search_file.clearFocus();
             }
         });
-        sortFile = view.findViewById(R.id.sort_file_home);
-        sortFile.setOnClickListener(new View.OnClickListener() {
-            boolean isChecked = false;
 
+        sortFile = view.findViewById(R.id.sort_file_home);
+        sortFile.setOnClickListener(new OnSingleClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onSingleClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.BorderDialogTheme);
                 View view = getLayoutInflater().inflate(R.layout.dialog_sort, null, false);
                 builder.setView(view);
@@ -165,9 +165,9 @@ public class FragHome extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                 tv_az.setTextColor(Color.parseColor(tvAzColor));
                 iv_za.setImageResource(ivZaResource);
                 tv_za.setTextColor(Color.parseColor(tvZaColor));
-                layoutAZ.setOnClickListener(new View.OnClickListener() {
+                layoutAZ.setOnClickListener(new OnSingleClickListener() {
                     @Override
-                    public void onClick(View v) {
+                    public void onSingleClick(View view) {
                         check_az.setVisibility(View.VISIBLE);
                         check_za.setVisibility(View.INVISIBLE);
                         iv_az.setImageResource(R.drawable.ic_sort_red);
@@ -194,9 +194,9 @@ public class FragHome extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                     }
                 });
 
-                layoutZA.setOnClickListener(new View.OnClickListener() {
+                layoutZA.setOnClickListener(new OnSingleClickListener() {
                     @Override
-                    public void onClick(View v) {
+                    public void onSingleClick(View view) {
                         check_az.setVisibility(View.INVISIBLE);
                         check_za.setVisibility(View.VISIBLE);
                         iv_za.setImageResource(R.drawable.ic_sort_red);

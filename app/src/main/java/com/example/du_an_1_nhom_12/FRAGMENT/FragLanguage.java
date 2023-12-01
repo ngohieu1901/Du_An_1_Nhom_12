@@ -19,6 +19,7 @@ import com.example.du_an_1_nhom_12.ADAPTER.LanguageFragADAPTER;
 import com.example.du_an_1_nhom_12.Activity.MainManageFile;
 import com.example.du_an_1_nhom_12.DTO.LanguageFragDTO;
 import com.example.du_an_1_nhom_12.R;
+import com.example.du_an_1_nhom_12.SUPPORT.OnSingleClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,9 +64,9 @@ public class FragLanguage extends Fragment {
         rc_lang.setAdapter(adapter);
 
         ImageView iv_back = view .findViewById(R.id.iv_back);
-        iv_back.setOnClickListener(new View.OnClickListener() {
+        iv_back.setOnClickListener(new OnSingleClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onSingleClick(View view) {
                 Intent intent = new Intent(getActivity(), MainManageFile.class);
                 startActivity(intent);
                 getActivity().finish();

@@ -143,9 +143,9 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
                         Button btn_agree = v.findViewById(R.id.btn_agree);
 
                         ed_ten.setText(allFileDTO.getTen());
-                        btn_agree.setOnClickListener(new View.OnClickListener() {
+                        btn_agree.setOnClickListener(new OnSingleClickListener() {
                             @Override
-                            public void onClick(View v) {
+                            public void onSingleClick(View view) {
                                 String path = allFileDTO.getPath();
 
                                 File oldFile = new File(path);
@@ -186,9 +186,9 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
                             }
                         });
 
-                        btn_cancel.setOnClickListener(new View.OnClickListener() {
+                        btn_cancel.setOnClickListener(new OnSingleClickListener() {
                             @Override
-                            public void onClick(View v) {
+                            public void onSingleClick(View view) {
                                 dialog.dismiss();
                             }
                         });
@@ -243,9 +243,9 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
                         dialog.show();
                         Button btn_delete = v.findViewById(R.id.btn_delete);
                         Button btn_cancel = v.findViewById(R.id.btn_cancel);
-                        btn_delete.setOnClickListener(new View.OnClickListener() {
+                        btn_delete.setOnClickListener(new OnSingleClickListener() {
                             @Override
-                            public void onClick(View v) {
+                            public void onSingleClick(View view) {
                                 String path = allFileDTO.getPath();
                                 File file = new File(path);
                                 if (file.exists()) {
@@ -269,9 +269,9 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
                                 dialog.dismiss();
                             }
                         });
-                        btn_cancel.setOnClickListener(new View.OnClickListener() {
+                        btn_cancel.setOnClickListener(new OnSingleClickListener() {
                             @Override
-                            public void onClick(View v) {
+                            public void onSingleClick(View view) {
                                 dialog.dismiss();
                             }
                         });
@@ -307,10 +307,9 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
                             Button btn_agree = v.findViewById(R.id.btn_agree);
 
                             ed_ten.setText(allFileDTO.getTen());
-                            btn_agree.setOnClickListener(new View.OnClickListener() {
-                                //RENAME
+                            btn_agree.setOnClickListener(new OnSingleClickListener() {
                                 @Override
-                                public void onClick(View v) {
+                                public void onSingleClick(View view) {
                                     String path = allFileDTO.getPath();
 
                                     File oldFile = new File(path);
@@ -351,9 +350,9 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
                                 }
                             });
 
-                            btn_cancel.setOnClickListener(new View.OnClickListener() {
+                            btn_cancel.setOnClickListener(new OnSingleClickListener() {
                                 @Override
-                                public void onClick(View v) {
+                                public void onSingleClick(View view) {
                                     dialog.dismiss();
                                 }
                             });
@@ -398,10 +397,9 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
                             dialog.show();
                             Button btn_delete = v.findViewById(R.id.btn_delete);
                             Button btn_cancel = v.findViewById(R.id.btn_cancel);
-                            btn_delete.setOnClickListener(new View.OnClickListener() {
-                                //DELETE
+                            btn_delete.setOnClickListener(new OnSingleClickListener() {
                                 @Override
-                                public void onClick(View v) {
+                                public void onSingleClick(View view) {
                                     String path = allFileDTO.getPath();
                                     File file = new File(path);
                                     if (file.exists()) {
@@ -425,9 +423,9 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
                                     dialog.dismiss();
                                 }
                             });
-                            btn_cancel.setOnClickListener(new View.OnClickListener() {
+                            btn_cancel.setOnClickListener(new OnSingleClickListener() {
                                 @Override
-                                public void onClick(View v) {
+                                public void onSingleClick(View view) {
                                     dialog.dismiss();
                                 }
                             });
