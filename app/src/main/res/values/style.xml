@@ -4,4 +4,7 @@
         <item name="android:windowBackground">@drawable/border_dialog</item>
         <!-- Các thuộc tính khác của dialog style -->
     </style>
+    <style name="PopupMenu" parent="@android:style/Widget.PopupMenu">
+        <item name="android:popupBackground">#ffffff</item>
+    </style>
 </resources>

@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.du_an_1_nhom_12.DTO.LanguageDTO;
 import com.example.du_an_1_nhom_12.R;
 import com.example.du_an_1_nhom_12.SUPPORT.LanguageStatic;
+import com.example.du_an_1_nhom_12.SUPPORT.OnSingleClickListener;
 
 import java.util.ArrayList;
 
@@ -52,9 +53,9 @@ public class LanguageADAPTER extends RecyclerView.Adapter<LanguageADAPTER.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.img_hinh.setImageResource(list_lang.get(position).getHinh());
         holder.tv_ten.setText(list_lang.get(position).getTen());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new OnSingleClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onSingleClick(View v) {
                 Log.e("onClick", "onClick: " + position);
                 if (position == 0){
                     LanguageStatic.setLanguage(v.getContext(),"en");

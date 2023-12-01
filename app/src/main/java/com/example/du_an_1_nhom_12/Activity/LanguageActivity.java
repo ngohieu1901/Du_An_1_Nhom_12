@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.du_an_1_nhom_12.ADAPTER.LanguageADAPTER;
 import com.example.du_an_1_nhom_12.DTO.LanguageDTO;
 import com.example.du_an_1_nhom_12.R;
+import com.example.du_an_1_nhom_12.SUPPORT.OnSingleClickListener;
 
 import java.util.ArrayList;
 
@@ -56,9 +57,9 @@ public class LanguageActivity extends AppCompatActivity implements LanguageADAPT
 
         tv_check = findViewById(R.id.tv_check);
 
-        tv_check.setOnClickListener(new View.OnClickListener() {
+        tv_check.setOnClickListener(new OnSingleClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onSingleClick(View view) {
                 if (!openActivity){
                     openActivity = true;
                     editor.putBoolean("lang_selected",true);

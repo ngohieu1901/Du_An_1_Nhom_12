@@ -26,6 +26,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.du_an_1_nhom_12.R;
+import com.example.du_an_1_nhom_12.SUPPORT.OnSingleClickListener;
 
 
 public class PermissionActivity extends AppCompatActivity {
@@ -50,9 +51,9 @@ public class PermissionActivity extends AppCompatActivity {
         sw_allow = findViewById(R.id.sw_allow);
         tv_continue = findViewById(R.id.tv_continue);
 
-        tv_continue.setOnClickListener(new View.OnClickListener() {
+        tv_continue.setOnClickListener(new OnSingleClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onSingleClick(View view) {
                 editor.putBoolean("permission", true);
                 editor.apply();
                 startActivity(new Intent(PermissionActivity.this, MainManageFile.class));
@@ -99,7 +100,7 @@ public class PermissionActivity extends AppCompatActivity {
                     //android < 11
                 } else {
                     if (isChecked) {
-                        // Kiểm tra quyền truy cập bộ nhớ
+                        // Kiểm tra
                         if (ContextCompat.checkSelfPermission(PermissionActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                             // đc cấp
                             tv_continue.setVisibility(View.VISIBLE);
@@ -108,7 +109,6 @@ public class PermissionActivity extends AppCompatActivity {
                             requestStoragePermission();
                         }
                     } else {
-                        // Switch tắt, ẩn TextView
                         tv_continue.setVisibility(View.GONE);
                     }
                 }
@@ -146,13 +146,14 @@ public class PermissionActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        //android < 11
         if (requestCode == PERMISSION_REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Quyền được cấp, hiển thị TextView
+                // Quyền được cấp
                 sw_allow.setChecked(true);
                 tv_continue.setVisibility(View.VISIBLE);
             } else {
-                // Quyền bị từ chối, tắt Switch và ẩn TextView
+                // Quyền bị từ chối
                 sw_allow.setChecked(false);
                 tv_continue.setVisibility(View.INVISIBLE);
             }
@@ -162,6 +163,7 @@ public class PermissionActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        //android 11
         if (requestCode == REQUEST_CODE) {
             if (SDK_INT >= Build.VERSION_CODES.R) {
                 if (Environment.isExternalStorageManager()) {

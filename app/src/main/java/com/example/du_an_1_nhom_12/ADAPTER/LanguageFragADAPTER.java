@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.du_an_1_nhom_12.DTO.LanguageFragDTO;
 import com.example.du_an_1_nhom_12.R;
 import com.example.du_an_1_nhom_12.SUPPORT.LanguageStatic;
+import com.example.du_an_1_nhom_12.SUPPORT.OnSingleClickListener;
 
 
 import java.util.List;
@@ -54,9 +55,9 @@ public class LanguageFragADAPTER extends RecyclerView.Adapter<LanguageFragADAPTE
         }else {
             holder.iv_check.setVisibility(View.GONE);
         }
-        holder.layout.setOnClickListener(new View.OnClickListener() {
+        holder.layout.setOnClickListener(new OnSingleClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onSingleClick(View view) {
                 Log.e("onClick", "onClick: " + position);
                 if (position == 0){
                     LanguageStatic.setLanguage(context,"en");

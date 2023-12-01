@@ -14,6 +14,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.du_an_1_nhom_12.ADAPTER.ViewPagerADAPTER;
 import com.example.du_an_1_nhom_12.R;
+import com.example.du_an_1_nhom_12.SUPPORT.OnSingleClickListener;
 
 
 import me.relex.circleindicator.CircleIndicator;
@@ -44,16 +45,16 @@ public class MainViewPager extends AppCompatActivity {
 
         indicator.setViewPager(pager);
 
-        tv_skip.setOnClickListener(new View.OnClickListener() {
+        tv_skip.setOnClickListener(new OnSingleClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onSingleClick(View view) {
                 pager.setCurrentItem(2);
             }
         });
 
-        btn_next.setOnClickListener(new View.OnClickListener() {
+        btn_next.setOnClickListener(new OnSingleClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onSingleClick(View view) {
                 if (pager.getCurrentItem() < 2) {
                     pager.setCurrentItem(pager.getCurrentItem() + 1);
                 } else if (pager.getCurrentItem() == 2) {

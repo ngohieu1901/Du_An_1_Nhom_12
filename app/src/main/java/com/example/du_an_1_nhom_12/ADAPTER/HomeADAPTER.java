@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,17 +22,20 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.du_an_1_nhom_12.Activity.PdfViewActivity;
 import com.example.du_an_1_nhom_12.DATABASE.FileDATABASE;
 import com.example.du_an_1_nhom_12.DTO.AllFileDTO;
 import com.example.du_an_1_nhom_12.R;
+import com.example.du_an_1_nhom_12.SUPPORT.OnSingleClickListener;
 
 
 import java.io.File;
@@ -45,6 +49,8 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
     Context context;
     ArrayList<AllFileDTO> list_home, list_file_old, list_bookmark;
     public boolean isActivityOpen = false;
+    PopupWindow popupWindow;
+
     public HomeADAPTER(Context context, ArrayList<AllFileDTO> list) {
         this.context = context;
         this.list_home = list;
@@ -78,9 +84,9 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
 //        }else if (allFileDTO.getTen().endsWith(".pptx")){
 //            allFileDTO.setHinh(R.drawable.pdf_icon);
 //        }
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new OnSingleClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onSingleClick(View view) {
                 if(!isActivityOpen){
                     isActivityOpen = true;
                     String path = list_home.get(position).getPath();
@@ -103,13 +109,192 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
         if (allFileDTO.getBookmark() == 0) {
             holder.bookmark_file.setImageResource(R.drawable.star);
         } else {
-            holder.bookmark_file.setImageResource(R.drawable.star_gold);
+            holder.bookmark_file.setImageResource(R.drawable.ic_star_gold);
         }
 
-        holder.menu_custom.setOnClickListener(new View.OnClickListener() {
+
+        holder.menu_custom.setOnClickListener(new OnSingleClickListener() {
             @Override
-            public void onClick(View v) {
-                showPopupMenu(holder.menu_custom);
+            public void onSingleClick(View view) {
+                // showPopupMenu(holder.menu_custom);
+                setPopupWindow();
+                popupWindow.showAsDropDown(view,-50,0);
+            }
+            public void setPopupWindow(){
+                LayoutInflater inflater = (LayoutInflater)
+                        context.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View view = inflater.inflate(R.layout.menu_popup, null);
+                LinearLayout lnRename = view.findViewById(R.id.layout_rename);
+                LinearLayout lnBookmark = view.findViewById(R.id.layout_bookmark);
+                LinearLayout lnShare = view.findViewById(R.id.layout_menu_share);
+                LinearLayout lnDelete = view.findViewById(R.id.layout_delete);
+//RENAMEEEEEEEEEEEEEEEEE
+                lnRename.setOnClickListener(new OnSingleClickListener() {
+                    @Override
+                    public void onSingleClick(View view) {
+                        popupWindow.dismiss();
+                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                        LayoutInflater inflater = ((Activity) context).getLayoutInflater();
+                        View v = inflater.inflate(R.layout.dialog_rename, null);
+                        builder.setView(v);
+                        Dialog dialog = builder.create();
+                        dialog.show();
+
+                        EditText ed_ten = v.findViewById(R.id.ed_ten);
+                        Button btn_cancel = v.findViewById(R.id.btn_cancel);
+                        Button btn_agree = v.findViewById(R.id.btn_agree);
+
+                        ed_ten.setText(allFileDTO.getTen());
+                        btn_agree.setOnClickListener(new OnSingleClickListener() {
+                            @Override
+                            public void onSingleClick(View view) {
+                                String path = allFileDTO.getPath();
+
+                                File oldFile = new File(path);
+                                Log.d("ZZZZZ","Path old: "+path);
+                                File newFile = new File("/storage/emulated/0/"+ed_ten.getText().toString());
+                                Log.d("ZZZZZ","Path new: "+ "/storage/emulated/0/"+ed_ten.getText().toString());
+
+                                if (oldFile.exists()) {
+                                    boolean success = oldFile.renameTo(new File("/storage/emulated/0/"+ed_ten.getText().toString()));
+                                    if (success) {
+                                        allFileDTO.setTen(ed_ten.getText().toString());
+                                        allFileDTO.setPath("/storage/emulated/0/"+ed_ten.getText().toString());
+                                        list_home.set(position, allFileDTO);
+                                        notifyItemChanged(position);
+                                        saveFile(list_home);
+
+                                        AllFileDTO fileDTO = null;
+                                        list_bookmark = (ArrayList<AllFileDTO>) FileDATABASE.getInstance(context).fileDAO().getListFile();
+                                        for (AllFileDTO file : list_bookmark) {
+                                            if (file.getPath().equals(path)) {
+                                                fileDTO = file;
+                                                break;
+                                            }
+                                        }
+                                        if (fileDTO != null) {
+                                            fileDTO.setTen(ed_ten.getText().toString());
+                                            fileDTO.setPath("/storage/emulated/0/"+ed_ten.getText().toString());
+                                            FileDATABASE.getInstance(context).fileDAO().updateFile(fileDTO);
+                                        }
+                                        Toast.makeText(context, context.getString(R.string.toast_rename), Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(context, context.getString(R.string.toast_failed), Toast.LENGTH_SHORT).show();
+                                    }
+                                } else {
+                                    Toast.makeText(context, context.getString(R.string.toast_exists), Toast.LENGTH_SHORT).show();
+                                }
+                                dialog.dismiss();
+                            }
+                        });
+
+                        btn_cancel.setOnClickListener(new OnSingleClickListener() {
+                            @Override
+                            public void onSingleClick(View view) {
+                                dialog.dismiss();
+                            }
+                        });
+                    }
+                });
+//BOOKMARKKKKKKKKKKKKKKK
+                lnBookmark.setOnClickListener(new OnSingleClickListener() {
+                    @Override
+                    public void onSingleClick(View view) {
+                        popupWindow.dismiss();
+
+                        int so = allFileDTO.getBookmark();
+                        if (so == 0) {
+                            allFileDTO.setBookmark(1);
+                            list_home.set(position, allFileDTO);
+                            saveFile(list_home);
+
+                            int hinh = list_home.get(position).getHinh();
+                            String ten = list_home.get(position).getTen();
+                            String ngay = list_home.get(position).getNgay();
+                            int bookmark = list_home.get(position).getBookmark();
+                            String path = list_home.get(position).getPath();
+                            AllFileDTO fileDTO = new AllFileDTO(hinh, ten, ngay, path, bookmark);
+                            FileDATABASE.getInstance(context).fileDAO().insertFile(fileDTO);
+                            loadFile();
+                            holder.bookmark_file.setImageResource(R.drawable.ic_star_gold);
+                        } else {
+                            allFileDTO.setBookmark(0);
+                            list_home.set(position, allFileDTO);
+                            saveFile(list_home);
+
+                            String path = list_home.get(position).getPath();
+                            list_bookmark = (ArrayList<AllFileDTO>) FileDATABASE.getInstance(context).fileDAO().getListFile();
+                            FileDATABASE.getInstance(context).fileDAO().deleteByPath(path);
+                            holder.bookmark_file.setImageResource(R.drawable.star);
+                            notifyDataSetChanged();
+                        }
+
+                    }
+                });
+//DELETEEEEEEEEEEEEE
+                lnDelete.setOnClickListener(new OnSingleClickListener() {
+                    @Override
+                    public void onSingleClick(View view) {
+                        popupWindow.dismiss();
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                        LayoutInflater inflater = ((Activity) context).getLayoutInflater();
+                        View v = inflater.inflate(R.layout.dialog_delete, null);
+                        builder.setView(v);
+                        Dialog dialog = builder.create();
+                        dialog.show();
+                        Button btn_delete = v.findViewById(R.id.btn_delete);
+                        Button btn_cancel = v.findViewById(R.id.btn_cancel);
+                        btn_delete.setOnClickListener(new OnSingleClickListener() {
+                            @Override
+                            public void onSingleClick(View view) {
+                                String path = allFileDTO.getPath();
+                                File file = new File(path);
+                                if (file.exists()) {
+                                    Log.d("ZZZZZ", "Path: " + file.getAbsolutePath());
+                                    if (file.delete()) {
+                                        list_home.remove(position);
+                                        saveFile(list_home);
+
+                                        list_bookmark = (ArrayList<AllFileDTO>) FileDATABASE.getInstance(context).fileDAO().getListFile();
+                                        FileDATABASE.getInstance(context).fileDAO().deleteByPath(path);
+                                        notifyDataSetChanged();
+                                        Toast.makeText(context, context.getString(R.string.toast_delete), Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        context.deleteFile(file.getName());
+                                        Toast.makeText(context, context.getString(R.string.toast_failed), Toast.LENGTH_SHORT).show();
+                                    }
+                                } else {
+                                    Toast.makeText(context, context.getString(R.string.toast_exists), Toast.LENGTH_SHORT).show();
+                                }
+
+                                dialog.dismiss();
+                            }
+                        });
+                        btn_cancel.setOnClickListener(new OnSingleClickListener() {
+                            @Override
+                            public void onSingleClick(View view) {
+                                dialog.dismiss();
+                            }
+                        });
+                    }
+                });
+
+                lnShare.setOnClickListener(new OnSingleClickListener() {
+                    @Override
+                    public void onSingleClick(View view) {
+                        popupWindow.dismiss();
+                        Intent intent = new Intent(Intent.ACTION_SEND);
+                        intent.setType("application/pdf");
+                        File pdfFile = new File(allFileDTO.getPath());
+                        Uri pdfUri = FileProvider.getUriForFile(context, context.getPackageName() + ".fileprovider", pdfFile);
+                        intent.putExtra(Intent.EXTRA_STREAM, pdfUri);
+                        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // Để cấp quyền đọc cho ứng dụng khác
+                        context.startActivity(Intent.createChooser(intent, "Chia sẻ tài liệu PDF"));
+
+                    }
+                });
+                popupWindow = new PopupWindow(view,500,LinearLayout.LayoutParams.WRAP_CONTENT,true);
             }
 
             private void showPopupMenu(View view) {
@@ -131,10 +316,9 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
                             Button btn_agree = v.findViewById(R.id.btn_agree);
 
                             ed_ten.setText(allFileDTO.getTen());
-                            btn_agree.setOnClickListener(new View.OnClickListener() {
-                                //RENAME
+                            btn_agree.setOnClickListener(new OnSingleClickListener() {
                                 @Override
-                                public void onClick(View v) {
+                                public void onSingleClick(View view) {
                                     String path = allFileDTO.getPath();
 
                                     File oldFile = new File(path);
@@ -175,9 +359,9 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
                                 }
                             });
 
-                            btn_cancel.setOnClickListener(new View.OnClickListener() {
+                            btn_cancel.setOnClickListener(new OnSingleClickListener() {
                                 @Override
-                                public void onClick(View v) {
+                                public void onSingleClick(View view) {
                                     dialog.dismiss();
                                 }
                             });
@@ -199,7 +383,7 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
                                 AllFileDTO fileDTO = new AllFileDTO(hinh, ten, ngay, path, bookmark);
                                 FileDATABASE.getInstance(context).fileDAO().insertFile(fileDTO);
                                 loadFile();
-                                holder.bookmark_file.setImageResource(R.drawable.star_gold);
+                                holder.bookmark_file.setImageResource(R.drawable.ic_star_gold);
                             } else {
                                 allFileDTO.setBookmark(0);
                                 list_home.set(position, allFileDTO);
@@ -222,10 +406,9 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
                             dialog.show();
                             Button btn_delete = v.findViewById(R.id.btn_delete);
                             Button btn_cancel = v.findViewById(R.id.btn_cancel);
-                            btn_delete.setOnClickListener(new View.OnClickListener() {
-                                //DELETE
+                            btn_delete.setOnClickListener(new OnSingleClickListener() {
                                 @Override
-                                public void onClick(View v) {
+                                public void onSingleClick(View view) {
                                     String path = allFileDTO.getPath();
                                     File file = new File(path);
                                     if (file.exists()) {
@@ -249,9 +432,9 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
                                     dialog.dismiss();
                                 }
                             });
-                            btn_cancel.setOnClickListener(new View.OnClickListener() {
+                            btn_cancel.setOnClickListener(new OnSingleClickListener() {
                                 @Override
-                                public void onClick(View v) {
+                                public void onSingleClick(View view) {
                                     dialog.dismiss();
                                 }
                             });
@@ -264,10 +447,11 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
                 popupMenu.show();
             }
         });
-        holder.bookmark_file.setOnClickListener(new View.OnClickListener() {
-            //BOOKMARK
+
+
+        holder.bookmark_file.setOnClickListener(new OnSingleClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onSingleClick(View view) {
                 int so = allFileDTO.getBookmark();
                 xuLyChonHOME(allFileDTO, so);
                 Toast.makeText(context, context.getString(R.string.toast_bookmark), Toast.LENGTH_SHORT).show();
@@ -292,7 +476,7 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
 
                     addFile();
                     loadFile();
-                    holder.bookmark_file.setImageResource(R.drawable.star_gold);
+                    holder.bookmark_file.setImageResource(R.drawable.ic_star_gold);
                 } else {
                     dto.setBookmark(0);
                     list_home.set(position, dto);
