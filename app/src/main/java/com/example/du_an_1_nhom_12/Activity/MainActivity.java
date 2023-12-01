@@ -4,6 +4,8 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -91,12 +93,18 @@ public class MainActivity extends AppCompatActivity {
         notificationItent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(this,0,notificationItent,0);
         //xây dựng thông báo
+        Bitmap logo = BitmapFactory.decodeResource(getResources(),R.drawable.img_1);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this,"channel_id")
                 .setSmallIcon(R.drawable.more_icon)
                 .setContentTitle("Thông báo")
                 .setContentText("Nhấp vào để mở")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pendingIntent)
+                // thiết lập ảnh to
+                .setStyle(new NotificationCompat.BigPictureStyle()
+                        .bigPicture(logo)
+                        .bigLargeIcon(null)
+                )
                 .setAutoCancel(true);
         // hiển thị thông báo
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
