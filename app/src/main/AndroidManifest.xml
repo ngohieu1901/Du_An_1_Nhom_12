@@ -5,8 +5,13 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+
 
     <application
+        android:name=".SUPPORT.NotifyConfig"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -17,6 +22,10 @@
         android:theme="@style/Theme.Du_An_1_Nhom_12"
         tools:replace="android:allowBackup"
         tools:targetApi="31">
+        <activity
+            android:name=".Activity.TutorialActivity"
+            android:exported="false" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.du_an_1_nhom_12.fileprovider"
@@ -24,7 +33,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/> <!-- file_paths là tên tệp XML bạn sẽ tạo -->
+                android:resource="@xml/file_paths" /> <!-- file_paths là tên tệp XML bạn sẽ tạo -->
         </provider>
 
         <activity
@@ -46,7 +55,7 @@
             android:name=".Activity.PdfViewActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.MainManageFile"
+            android:name=".Activity.ManageFileActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.LanguageActivity"
@@ -55,7 +64,7 @@
             android:name=".Activity.MainViewPager"
             android:exported="false" />
         <activity
-            android:name=".Activity.MainActivity"
+            android:name=".Activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

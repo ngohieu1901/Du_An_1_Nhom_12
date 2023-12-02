@@ -2,10 +2,8 @@ package com.example.du_an_1_nhom_12.Activity;
 
 import static android.os.Build.VERSION.SDK_INT;
 
-import android.app.Dialog;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -24,7 +22,7 @@ import com.example.du_an_1_nhom_12.R;
 import com.example.du_an_1_nhom_12.SUPPORT.OnSingleClickListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainManageFile extends AppCompatActivity {
+public class ManageFileActivity extends AppCompatActivity {
     FragmentManager manager;
     FragHome fragHome;
     FragBookmark fragBookmark;
@@ -61,6 +59,8 @@ public class MainManageFile extends AppCompatActivity {
             }
         });
     }
+
+
 
     @Override
     public void onBackPressed() {

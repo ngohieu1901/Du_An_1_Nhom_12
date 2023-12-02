@@ -56,7 +56,7 @@ public class PermissionActivity extends AppCompatActivity {
             public void onSingleClick(View view) {
                 editor.putBoolean("permission", true);
                 editor.apply();
-                startActivity(new Intent(PermissionActivity.this, MainManageFile.class));
+                startActivity(new Intent(PermissionActivity.this, ManageFileActivity.class));
                 finish();
             }
         });

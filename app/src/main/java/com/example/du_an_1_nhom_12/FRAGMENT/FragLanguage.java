@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.du_an_1_nhom_12.ADAPTER.LanguageFragADAPTER;
-import com.example.du_an_1_nhom_12.Activity.MainManageFile;
+import com.example.du_an_1_nhom_12.Activity.ManageFileActivity;
 import com.example.du_an_1_nhom_12.DTO.LanguageFragDTO;
 import com.example.du_an_1_nhom_12.R;
 import com.example.du_an_1_nhom_12.SUPPORT.OnSingleClickListener;
@@ -67,7 +67,7 @@ public class FragLanguage extends Fragment {
         iv_back.setOnClickListener(new OnSingleClickListener() {
             @Override
             public void onSingleClick(View view) {
-                Intent intent = new Intent(getActivity(), MainManageFile.class);
+                Intent intent = new Intent(getActivity(), ManageFileActivity.class);
                 startActivity(intent);
                 getActivity().finish();
             }
