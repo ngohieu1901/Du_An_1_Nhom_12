@@ -39,7 +39,7 @@ public class WritePdfActivity extends AppCompatActivity {
         mCancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(WritePdfActivity.this, MainManageFile.class));
+                startActivity(new Intent(WritePdfActivity.this, ManageFileActivity.class));
                 finish();
             }
         });
