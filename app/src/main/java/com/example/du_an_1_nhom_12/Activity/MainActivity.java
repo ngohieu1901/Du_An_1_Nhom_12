@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         // toạ intent cho activity
         Intent notificationItent = new Intent(this,HuongDanActivity.class );
         notificationItent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this,0,notificationItent,0);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationItent, PendingIntent.FLAG_IMMUTABLE);
         //xây dựng thông báo
 
         Bitmap logo = BitmapFactory.decodeResource(getResources(),R.drawable.img_1);
