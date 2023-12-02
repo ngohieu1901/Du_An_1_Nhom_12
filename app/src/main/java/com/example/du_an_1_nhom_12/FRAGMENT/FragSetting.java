@@ -92,6 +92,7 @@ public class FragSetting extends Fragment {
         layout_write.setOnClickListener(new OnSingleClickListener() {
             @Override
             public void onSingleClick(View view) {
+
                 startActivity(new Intent(getActivity(), WritePdfActivity.class));
             }
         });
