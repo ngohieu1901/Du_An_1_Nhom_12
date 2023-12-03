@@ -24,6 +24,7 @@
         android:layout_gravity="center"
         android:text="@string/tv_feedback1"/>
     <EditText
+        android:id="@+id/editTextFeedback"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@drawable/border_button"
