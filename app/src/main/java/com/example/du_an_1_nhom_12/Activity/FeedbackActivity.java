@@ -46,11 +46,11 @@ public class FeedbackActivity extends AppCompatActivity {
 
         if (!feedbackText.isEmpty()) {
             // Lấy thông tin về phiên bản và tên thiết bị
-            String versionName = "1.3.6"; // Đổi thành phiên bản thực tế của ứng dụng
+            String versionName = "1.1.1"; // Đổi thành phiên bản thực tế của ứng dụng
             String deviceName = Build.MODEL;
 
             // Tạo nội dung email với thông tin được thêm vào
-            String emailContent = "XLSX Reader - Excel Viewer\n"
+            String emailContent = "PDF Viewer - Scanner PDF\n\n"
                     + "version: " + versionName + "\n"
                     + "device: " + deviceName + "\n"
                     + "content: " + feedbackText;
@@ -59,7 +59,7 @@ public class FeedbackActivity extends AppCompatActivity {
             Intent emailIntent = new Intent(Intent.ACTION_SEND);
             emailIntent.setType("message/rfc822");
             emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"z3dat1905@gmail.com"}); // Điền địa chỉ email của bạn
-            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback from XLSX Reader - Excel Viewer");
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback from PDF Viewer - Scanner PDF\n");
             emailIntent.putExtra(Intent.EXTRA_TEXT, emailContent);
 
             try {

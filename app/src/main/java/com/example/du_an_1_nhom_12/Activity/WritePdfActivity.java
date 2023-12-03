@@ -12,6 +12,7 @@ import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.du_an_1_nhom_12.R;
@@ -25,7 +26,7 @@ import java.util.Locale;
 
 public class WritePdfActivity extends AppCompatActivity {
     private static final int STORAGE_CODE = 1000;
-
+    ImageView back_writepdf;
     EditText mTextEt;
     Button mSaveBtn;
     Button mCancelBtn;
@@ -36,6 +37,15 @@ public class WritePdfActivity extends AppCompatActivity {
         mTextEt = findViewById(R.id.textEt);
         mSaveBtn = findViewById(R.id.saveBtn);
         mCancelBtn = findViewById(R.id.cancelBtn);
+        back_writepdf = findViewById(R.id.back_writepdf);
+
+        back_writepdf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(WritePdfActivity.this, ManageFileActivity.class));
+                finish();
+            }
+        });
         mCancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
