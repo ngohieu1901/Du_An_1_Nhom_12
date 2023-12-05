@@ -1,6 +1,7 @@
 package com.example.du_an_1_nhom_12.FRAGMENT;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.example.du_an_1_nhom_12.Activity.ScanPdfActivity;
 import com.example.du_an_1_nhom_12.Activity.WritePdfActivity;
 import com.example.du_an_1_nhom_12.BuildConfig;
 import com.example.du_an_1_nhom_12.R;
+import com.example.du_an_1_nhom_12.RateUsDialog;
 import com.example.du_an_1_nhom_12.SUPPORT.OnSingleClickListener;
 public class FragSetting extends Fragment {
     public boolean isActivityOpen = false;
@@ -71,7 +73,12 @@ public class FragSetting extends Fragment {
         layout_rate_app.setOnClickListener(new OnSingleClickListener() {
             @Override
             public void onSingleClick(View view) {
-                startActivity(new Intent(getActivity(), RateAppActivity.class));
+//                startActivity(new Intent(getActivity(), RateAppActivity.class));
+                RateUsDialog rateUsDialog= new RateUsDialog(getContext());
+
+                rateUsDialog.getWindow().setBackgroundDrawable(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
+                rateUsDialog.setCancelable(false);
+                rateUsDialog.show();
             }
         });
 

@@ -6,4 +6,12 @@
     </style>
 
     <style name="Theme.Du_An_1_Nhom_12" parent="Base.Theme.Du_An_1_Nhom_12" />
+
+    <style name="MyRatingBar" parent="Widget.AppCompat.RatingBar">
+
+        <item name="colorControlNormal">#4D000000</item>
+        <item name="colorControlActivated">#FDD736</item>
+
+    </style>
+
 </resources>

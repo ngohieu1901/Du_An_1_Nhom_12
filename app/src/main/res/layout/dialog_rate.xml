@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    app:cardUseCompatPadding="true">
+
+<!--    <ImageView-->
+<!--        android:id="@+id/ratingImage"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:src="@drawable/four"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:layout_marginTop="15dp"/>-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Your Opinion\nMatter To Us"-->
+<!--        android:textSize="26sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:textColor="#CD3527"-->
+<!--        android:layout_marginTop="16dp"/>-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="If you enjoy this PDF reader, would you\nmind rating us on the Google Play, then?"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:textSize="13sp"-->
+<!--        android:layout_marginTop="7dp"/>-->
+
+<!--&lt;!&ndash;    <LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:orientation="horizontal"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:gravity="center"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_marginTop="7dp">&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <ImageButton&ndash;&gt;-->
+<!--&lt;!&ndash;            android:id="@+id/star01"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="39dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="39dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:src="@drawable/often_star_icon"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:background="#00000000" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <ImageButton&ndash;&gt;-->
+<!--&lt;!&ndash;            android:id="@+id/star02"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="39dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="39dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:src="@drawable/often_star_icon"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:background="#00000000" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <ImageButton&ndash;&gt;-->
+<!--&lt;!&ndash;            android:id="@+id/star03"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="39dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="39dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:src="@drawable/often_star_icon"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:background="#00000000" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <ImageButton&ndash;&gt;-->
+<!--&lt;!&ndash;            android:id="@+id/star04"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="39dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="39dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:src="@drawable/often_star_icon"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:background="#00000000" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <ImageButton&ndash;&gt;-->
+<!--&lt;!&ndash;            android:id="@+id/star05"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="39dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="39dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:src="@drawable/often_star_icon"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:background="#00000000" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;    </LinearLayout>&ndash;&gt;-->
+
+<!--    <androidx.appcompat.widget.AppCompatRatingBar-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:rating="0"-->
+<!--        android:theme="@style/MyRatingBar"-->
+<!--        android:id="@+id/ratingBar"/>-->
+<!--    -->
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:cardCornerRadius="10dp">-->
+<!--        -->
+<!--        <Button-->
+<!--            android:layout_width="136dp"-->
+<!--            android:layout_height="36dp"-->
+<!--            android:background="#CD3527"-->
+<!--            android:text="Rate us"-->
+<!--            android:id="@+id/rateUs"/>-->
+
+<!--    </androidx.cardview.widget.CardView>-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Not now"-->
+<!--        android:id="@+id/notNow"/>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/ratingImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/four"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Opinion\nMatter To Us"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#CD3527"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="If you enjoy this PDF reader, would you\nmind rating us on the Google Play, then?"
+            android:layout_gravity="center_horizontal"
+            android:textSize="13sp"
+            android:layout_marginTop="7dp"/>
+
+        <!--    <LinearLayout-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:orientation="horizontal"-->
+        <!--        android:gravity="center"-->
+        <!--        android:layout_marginTop="7dp">-->
+
+        <!--        <ImageButton-->
+        <!--            android:id="@+id/star01"-->
+        <!--            android:layout_width="39dp"-->
+        <!--            android:layout_height="39dp"-->
+        <!--            android:src="@drawable/often_star_icon"-->
+        <!--            android:background="#00000000" />-->
+
+        <!--        <ImageButton-->
+        <!--            android:id="@+id/star02"-->
+        <!--            android:layout_width="39dp"-->
+        <!--            android:layout_height="39dp"-->
+        <!--            android:src="@drawable/often_star_icon"-->
+        <!--            android:background="#00000000" />-->
+
+        <!--        <ImageButton-->
+        <!--            android:id="@+id/star03"-->
+        <!--            android:layout_width="39dp"-->
+        <!--            android:layout_height="39dp"-->
+        <!--            android:src="@drawable/often_star_icon"-->
+        <!--            android:background="#00000000" />-->
+
+        <!--        <ImageButton-->
+        <!--            android:id="@+id/star04"-->
+        <!--            android:layout_width="39dp"-->
+        <!--            android:layout_height="39dp"-->
+        <!--            android:src="@drawable/often_star_icon"-->
+        <!--            android:background="#00000000" />-->
+
+        <!--        <ImageButton-->
+        <!--            android:id="@+id/star05"-->
+        <!--            android:layout_width="39dp"-->
+        <!--            android:layout_height="39dp"-->
+        <!--            android:src="@drawable/often_star_icon"-->
+        <!--            android:background="#00000000" />-->
+
+        <!--    </LinearLayout>-->
+
+        <androidx.appcompat.widget.AppCompatRatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rating="0"
+            android:theme="@style/MyRatingBar"
+            android:id="@+id/ratingBar"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp">
+
+            <Button
+                android:layout_width="136dp"
+                android:layout_height="36dp"
+                android:background="#CD3527"
+                android:text="Rate us"
+                android:id="@+id/rateUs"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Not now"
+            android:id="@+id/notNow"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
