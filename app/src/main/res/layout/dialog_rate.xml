@@ -115,7 +115,7 @@
             android:layout_height="100dp"
             android:src="@drawable/four"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="65dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -184,19 +184,23 @@
             android:layout_height="wrap_content"
             android:rating="0"
             android:theme="@style/MyRatingBar"
-            android:id="@+id/ratingBar"/>
+            android:id="@+id/ratingBar"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="7dp"/>
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="10dp">
+            app:cardCornerRadius="10dp"
+            android:layout_marginTop="25dp">
 
             <Button
                 android:layout_width="136dp"
                 android:layout_height="36dp"
                 android:background="#CD3527"
                 android:text="Rate us"
-                android:id="@+id/rateUs"/>
+                android:id="@+id/rateUs" />
 
         </androidx.cardview.widget.CardView>
 
@@ -204,7 +208,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Not now"
-            android:id="@+id/notNow"/>
+            android:id="@+id/notNow"
+            android:layout_marginTop="19dp"
+            android:layout_marginBottom="50dp"/>
 
     </LinearLayout>
 
