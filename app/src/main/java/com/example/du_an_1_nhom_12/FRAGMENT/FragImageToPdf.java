@@ -110,11 +110,12 @@ public class FragImageToPdf extends Fragment {
         progressDialog.setTitle("Please wait");
         progressDialog.setCanceledOnTouchOutside(false);
 
-        loadImages();
+//        loadImages();
 
         addImageFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 showInputImageDialog();
             }
         });
@@ -175,6 +176,8 @@ public class FragImageToPdf extends Fragment {
                         .show();
             }
         });
+
+        loadImages();
 
     }
 

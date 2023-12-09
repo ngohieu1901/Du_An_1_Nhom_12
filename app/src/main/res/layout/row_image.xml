@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="1dp"
-    app:cardUseCompatPadding="true"
-    class = "com.example.du_an_1_nhom_12.FRAGMENT.FragImageToPdf">
+    app:cardUseCompatPadding="true">
+
+<!--    class = "com.example.du_an_1_nhom_12.FRAGMENT.FragImageToPdf"-->
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -27,4 +28,4 @@
 
     </RelativeLayout>
 
-</com.google.android.material.card.MaterialCardView>
+</androidx.cardview.widget.CardView>

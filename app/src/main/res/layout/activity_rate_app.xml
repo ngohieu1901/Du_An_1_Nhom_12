@@ -4,6 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.RateAppActivity">
+    tools:context=".Activity.RateAppActivity"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/ratingImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/non"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Opinion\nMatter To Us"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#CD3527"
+        android:layout_marginTop="25dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="If you enjoy this PDF reader, would you\nmind rating us on the Google Play, then?"
+        android:layout_gravity="center_horizontal"
+        android:textSize="13sp"
+        android:layout_marginTop="12dp"/>
+
+    <androidx.appcompat.widget.AppCompatRatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rating="0"
+        android:theme="@style/MyRatingBar"
+        android:id="@+id/ratingBar"
+        android:layout_marginTop="6dp"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:layout_marginTop="20dp">
+
+        <Button
+            android:layout_width="136dp"
+            android:layout_height="36dp"
+            android:background="#CD3527"
+            android:text="Rate us"
+            android:id="@+id/rateUs"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Not now"
+        android:id="@+id/notNow"
+        android:layout_marginTop="19dp"/>
 
 </LinearLayout>
