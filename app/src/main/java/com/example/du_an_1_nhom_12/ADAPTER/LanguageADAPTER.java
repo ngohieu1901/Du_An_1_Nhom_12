@@ -31,16 +31,15 @@ public class LanguageADAPTER extends RecyclerView.Adapter<LanguageADAPTER.ViewHo
     int row_index = -1;
     private OnItemClickListener onItemClickListener;
 
-
     public LanguageADAPTER(Context context, ArrayList<LanguageDTO> list_lang, OnItemClickListener clickListener) {
         this.context = context;
         this.list_lang = list_lang;
         this.onItemClickListener = clickListener;
     }
 
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        this.onItemClickListener = listener;
-    }
+//    public void setOnItemClickListener(OnItemClickListener listener) {
+//        this.onItemClickListener = listener;
+//    }
 
     @NonNull
     @Override

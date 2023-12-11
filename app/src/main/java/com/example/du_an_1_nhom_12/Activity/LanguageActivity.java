@@ -50,7 +50,7 @@ public class LanguageActivity extends AppCompatActivity implements LanguageADAPT
         list.add(new LanguageDTO(R.drawable.phap,"French",false));
 
         adapter = new LanguageADAPTER(this,list,this);
-        adapter.setOnItemClickListener(this);
+//        adapter.setOnItemClickListener(this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         rc_lang.setLayoutManager(linearLayoutManager);
         rc_lang.setAdapter(adapter);

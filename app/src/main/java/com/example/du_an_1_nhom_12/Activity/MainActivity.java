@@ -44,13 +44,12 @@ public class MainActivity extends AppCompatActivity {
         boolean started = preferences.getBoolean("started",false);
         boolean permission = preferences.getBoolean("permission",false);
         progressBar = findViewById(R.id.loading_bar);
-
+        //object: CounDownTimer(2000,1000){
         CountDownTimer countDownTimer = new CountDownTimer(2000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
             }
-
             @Override
             public void onFinish() {
                 if (lang_selected){
