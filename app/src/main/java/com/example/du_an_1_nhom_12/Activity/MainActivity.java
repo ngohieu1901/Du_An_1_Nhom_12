@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         //Khoi tao layout cho Notify
         Bitmap logo = BitmapFactory.decodeResource(getResources(),R.drawable.bg_notify);
         Notification customNotification = new NotificationCompat.Builder(MainActivity.this, NotifyConfig.CHANEL_ID)
-                .setSmallIcon(android.R.drawable.ic_lock_idle_alarm)
+                .setSmallIcon(R.drawable.logo_app)
                 .setContentTitle("Tips and Tricks use PDF Manager")
                 .setContentIntent(resultPendingIntent)//intend nhan tuong tac
                 //thiet lap ảnh to
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                         .bigLargeIcon(null)
                 )
                 .setLargeIcon(logo)
-                .setColor(Color.RED)
+                .setColor(Color.GRAY)
                 .setAutoCancel(true)
                 .build();
         //Khoi tao manager de quan notifi
