@@ -40,10 +40,11 @@ import java.util.ArrayList;
 
 public class BookmarkADAPTER extends RecyclerView.Adapter<BookmarkADAPTER.ViewHolder> implements Filterable {
     Context context;
-    ArrayList<AllFileDTO> list_bookmark,list_home,list_file_old;
+    ArrayList<AllFileDTO> list_bookmark, list_home, list_file_old;
     HomeADAPTER adapter;
     boolean isActivityOpen = false;
     PopupWindow popupWindow;
+
     public BookmarkADAPTER(Context context, ArrayList<AllFileDTO> list) {
         this.context = context;
         this.list_bookmark = list;
@@ -98,16 +99,25 @@ public class BookmarkADAPTER extends RecyclerView.Adapter<BookmarkADAPTER.ViewHo
             public void onSingleClick(View view) {
 //                showPopupMenu(holder.menu_custom);
                 setPopupWindow();
-                popupWindow.showAsDropDown(view,-20,0);
+                popupWindow.showAsDropDown(view, -20, 0);
             }
-            public void setPopupWindow(){
-                LayoutInflater inflater = (LayoutInflater)context.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+            public void setPopupWindow() {
+                LayoutInflater inflater = (LayoutInflater) context.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View view = inflater.inflate(R.layout.menu_popup, null);
                 LinearLayout lnRename = view.findViewById(R.id.layout_rename);
                 LinearLayout lnBookmark = view.findViewById(R.id.layout_bookmark);
                 LinearLayout lnShare = view.findViewById(R.id.layout_menu_share);
                 LinearLayout lnDelete = view.findViewById(R.id.layout_delete);
-                ImageView ivStarMenu = view.findViewById(R.id.iv_star_menu);
+                TextView tvRename,tvBookmark,tvShare,tvDelete;
+                tvRename  = view.findViewById(R.id.tv_rename);
+                tvDelete  = view.findViewById(R.id.tv_delete);
+                tvBookmark  = view.findViewById(R.id.tv_bookmark);
+                tvShare  = view.findViewById(R.id.tv_share);
+                tvRename.setText(context.getString(R.string.rename_popup));
+                tvDelete.setText(context.getString(R.string.delete_popup));
+                tvShare.setText(context.getString(R.string.tv_share));
+                tvBookmark.setText(context.getString(R.string.bookmark_popup));
 //UPDATEEEEEEEEEEEEEEEEEE
                 lnRename.setOnClickListener(new OnSingleClickListener() {
                     @Override
@@ -125,47 +135,56 @@ public class BookmarkADAPTER extends RecyclerView.Adapter<BookmarkADAPTER.ViewHo
                         Button btn_cancel = v.findViewById(R.id.btn_cancel);
                         Button btn_agree = v.findViewById(R.id.btn_agree);
 
-                        ed_ten.setText(allFileDTO.getTen());
+                        String name = allFileDTO.getTen();
+                        if (name.indexOf(".") > 0) {
+                            name = name.substring(0, name.lastIndexOf("."));
+                        }
+                        ed_ten.setText(name);
+
                         btn_agree.setOnClickListener(new OnSingleClickListener() {
                             @Override
                             public void onSingleClick(View view) {
-                                adapter = new HomeADAPTER(context,list_home);
+                                adapter = new HomeADAPTER(context, list_home);
                                 list_home = adapter.readFile();
                                 String path = list_bookmark.get(position).getPath();
 
                                 File oldFile = new File(path);
-                                Log.d("ZZZZZ","Path old: "+path);
-                                File newFile = new File("/storage/emulated/0/"+ed_ten.getText().toString());
-                                Log.d("ZZZZZ","Path new: "+ "/storage/emulated/0/"+ed_ten.getText().toString());
+                                Log.d("ZZZZZ", "Path old: " + path);
+                                File newFile = new File("/storage/emulated/0/" + ed_ten.getText().toString() + ".pdf");
+                                Log.d("ZZZZZ", "Path new: " + "/storage/emulated/0/" + ed_ten.getText().toString() + ".pdf");
 
                                 if (oldFile.exists()) {
-                                    boolean success = oldFile.renameTo(new File("/storage/emulated/0/"+ed_ten.getText().toString()));
-                                    if (success) {
-                                        int posHome = 0;
-                                        for (int i = 0; i < list_home.size(); i++){
-                                            AllFileDTO fileHome = list_home.get(i);
-                                            if (fileHome.getPath().equals(path)){
-                                                posHome = i;
-                                                fileHome.setTen(ed_ten.getText().toString());
-                                                fileHome.setPath("/storage/emulated/0/"+ed_ten.getText().toString());
-                                                list_home.set(posHome,fileHome);
-                                                adapter.saveFile(list_home);
-                                                adapter.notifyDataSetChanged();
-                                                break;
-                                            }
-                                        }
-                                        allFileDTO.setTen(ed_ten.getText().toString());
-                                        allFileDTO.setPath("/storage/emulated/0/"+ed_ten.getText().toString());
-                                        FileDATABASE.getInstance(context).fileDAO().updateFile(allFileDTO);
-                                        loadFile();
-                                        Toast.makeText(context, context.getString(R.string.toast_rename), Toast.LENGTH_SHORT).show();
+                                    if (ed_ten.getText().toString().isEmpty()) {
+                                        Toast.makeText(context, "Please enter name file", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        Toast.makeText(context, context.getString(R.string.toast_failed), Toast.LENGTH_SHORT).show();
+                                        boolean success = oldFile.renameTo(new File("/storage/emulated/0/" + ed_ten.getText().toString() + ".pdf"));
+                                        if (success) {
+                                            int posHome = 0;
+                                            for (int i = 0; i < list_home.size(); i++) {
+                                                AllFileDTO fileHome = list_home.get(i);
+                                                if (fileHome.getPath().equals(path)) {
+                                                    posHome = i;
+                                                    fileHome.setTen(ed_ten.getText().toString() + ".pdf");
+                                                    fileHome.setPath("/storage/emulated/0/" + ed_ten.getText().toString() + ".pdf");
+                                                    list_home.set(posHome, fileHome);
+                                                    adapter.saveFile(list_home);
+                                                    adapter.notifyDataSetChanged();
+                                                    break;
+                                                }
+                                            }
+                                            allFileDTO.setTen(ed_ten.getText().toString() + ".pdf");
+                                            allFileDTO.setPath("/storage/emulated/0/" + ed_ten.getText().toString() + ".pdf");
+                                            FileDATABASE.getInstance(context).fileDAO().updateFile(allFileDTO);
+                                            loadFile();
+                                            dialog.dismiss();
+                                            Toast.makeText(context, context.getString(R.string.toast_rename), Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Toast.makeText(context, context.getString(R.string.toast_failed), Toast.LENGTH_SHORT).show();
+                                        }
                                     }
                                 } else {
                                     Toast.makeText(context, context.getString(R.string.toast_exists), Toast.LENGTH_SHORT).show();
                                 }
-                                dialog.dismiss();
                             }
                         });
 
@@ -183,17 +202,17 @@ public class BookmarkADAPTER extends RecyclerView.Adapter<BookmarkADAPTER.ViewHo
                     public void onSingleClick(View view) {
                         popupWindow.dismiss();
 
-                        adapter = new HomeADAPTER(context,list_home);
+                        adapter = new HomeADAPTER(context, list_home);
                         list_home = adapter.readFile();
                         String path = list_bookmark.get(position).getPath();
 
                         int posHome = 0;
-                        for (int i = 0; i < list_home.size(); i++){
+                        for (int i = 0; i < list_home.size(); i++) {
                             AllFileDTO fileHome = list_home.get(i);
-                            if (fileHome.getPath().equals(path)){
+                            if (fileHome.getPath().equals(path)) {
                                 posHome = i;
                                 fileHome.setBookmark(0);
-                                list_home.set(posHome,fileHome);
+                                list_home.set(posHome, fileHome);
                                 adapter.saveFile(list_home);
                                 break;
                             }
@@ -222,7 +241,7 @@ public class BookmarkADAPTER extends RecyclerView.Adapter<BookmarkADAPTER.ViewHo
                         btn_delete.setOnClickListener(new OnSingleClickListener() {
                             @Override
                             public void onSingleClick(View view) {
-                                adapter = new HomeADAPTER(context,list_home);
+                                adapter = new HomeADAPTER(context, list_home);
                                 list_home = adapter.readFile();
                                 String path = list_bookmark.get(position).getPath();
 
@@ -231,9 +250,9 @@ public class BookmarkADAPTER extends RecyclerView.Adapter<BookmarkADAPTER.ViewHo
                                     Log.d("ZZZZZ", "Path: " + file.getAbsolutePath());
                                     if (file.delete()) {
                                         int posHome = 0;
-                                        for (int i = 0; i < list_home.size(); i++){
+                                        for (int i = 0; i < list_home.size(); i++) {
                                             AllFileDTO fileHome = list_home.get(i);
-                                            if (fileHome.getPath().equals(path)){
+                                            if (fileHome.getPath().equals(path)) {
                                                 posHome = i;
                                                 list_home.remove(posHome);
                                                 adapter.saveFile(list_home);
@@ -278,7 +297,7 @@ public class BookmarkADAPTER extends RecyclerView.Adapter<BookmarkADAPTER.ViewHo
 
                     }
                 });
-                popupWindow = new PopupWindow(view,300,LinearLayout.LayoutParams.WRAP_CONTENT,true);
+                popupWindow = new PopupWindow(view, 350, LinearLayout.LayoutParams.WRAP_CONTENT, true);
             }
 
             private void showPopupMenu(View view) {
@@ -304,33 +323,33 @@ public class BookmarkADAPTER extends RecyclerView.Adapter<BookmarkADAPTER.ViewHo
                             btn_agree.setOnClickListener(new OnSingleClickListener() {
                                 @Override
                                 public void onSingleClick(View view) {
-                                    adapter = new HomeADAPTER(context,list_home);
+                                    adapter = new HomeADAPTER(context, list_home);
                                     list_home = adapter.readFile();
                                     String path = list_bookmark.get(position).getPath();
 
                                     File oldFile = new File(path);
-                                    Log.d("ZZZZZ","Path old: "+path);
-                                    File newFile = new File("/storage/emulated/0/"+ed_ten.getText().toString());
-                                    Log.d("ZZZZZ","Path new: "+ "/storage/emulated/0/"+ed_ten.getText().toString());
+                                    Log.d("ZZZZZ", "Path old: " + path);
+                                    File newFile = new File("/storage/emulated/0/" + ed_ten.getText().toString());
+                                    Log.d("ZZZZZ", "Path new: " + "/storage/emulated/0/" + ed_ten.getText().toString());
 
                                     if (oldFile.exists()) {
-                                        boolean success = oldFile.renameTo(new File("/storage/emulated/0/"+ed_ten.getText().toString()));
+                                        boolean success = oldFile.renameTo(new File("/storage/emulated/0/" + ed_ten.getText().toString()));
                                         if (success) {
                                             int posHome = 0;
-                                            for (int i = 0; i < list_home.size(); i++){
+                                            for (int i = 0; i < list_home.size(); i++) {
                                                 AllFileDTO fileHome = list_home.get(i);
-                                                if (fileHome.getPath().equals(path)){
+                                                if (fileHome.getPath().equals(path)) {
                                                     posHome = i;
                                                     fileHome.setTen(ed_ten.getText().toString());
-                                                    fileHome.setPath("/storage/emulated/0/"+ed_ten.getText().toString());
-                                                    list_home.set(posHome,fileHome);
+                                                    fileHome.setPath("/storage/emulated/0/" + ed_ten.getText().toString());
+                                                    list_home.set(posHome, fileHome);
                                                     adapter.saveFile(list_home);
                                                     adapter.notifyDataSetChanged();
                                                     break;
                                                 }
                                             }
                                             allFileDTO.setTen(ed_ten.getText().toString());
-                                            allFileDTO.setPath("/storage/emulated/0/"+ed_ten.getText().toString());
+                                            allFileDTO.setPath("/storage/emulated/0/" + ed_ten.getText().toString());
                                             FileDATABASE.getInstance(context).fileDAO().updateFile(allFileDTO);
                                             loadFile();
                                             Toast.makeText(context, context.getString(R.string.toast_rename), Toast.LENGTH_SHORT).show();
@@ -353,17 +372,17 @@ public class BookmarkADAPTER extends RecyclerView.Adapter<BookmarkADAPTER.ViewHo
                             });
                             return true;
                         } else if (item.getItemId() == R.id.bookmark) {
-                            adapter = new HomeADAPTER(context,list_home);
+                            adapter = new HomeADAPTER(context, list_home);
                             list_home = adapter.readFile();
                             String path = list_bookmark.get(position).getPath();
 
                             int posHome = 0;
-                            for (int i = 0; i < list_home.size(); i++){
+                            for (int i = 0; i < list_home.size(); i++) {
                                 AllFileDTO fileHome = list_home.get(i);
-                                if (fileHome.getPath().equals(path)){
+                                if (fileHome.getPath().equals(path)) {
                                     posHome = i;
                                     fileHome.setBookmark(0);
-                                    list_home.set(posHome,fileHome);
+                                    list_home.set(posHome, fileHome);
                                     adapter.saveFile(list_home);
                                     break;
                                 }
@@ -387,7 +406,7 @@ public class BookmarkADAPTER extends RecyclerView.Adapter<BookmarkADAPTER.ViewHo
                             btn_delete.setOnClickListener(new OnSingleClickListener() {
                                 @Override
                                 public void onSingleClick(View view) {
-                                    adapter = new HomeADAPTER(context,list_home);
+                                    adapter = new HomeADAPTER(context, list_home);
                                     list_home = adapter.readFile();
                                     String path = list_bookmark.get(position).getPath();
 
@@ -396,9 +415,9 @@ public class BookmarkADAPTER extends RecyclerView.Adapter<BookmarkADAPTER.ViewHo
                                         Log.d("ZZZZZ", "Path: " + file.getAbsolutePath());
                                         if (file.delete()) {
                                             int posHome = 0;
-                                            for (int i = 0; i < list_home.size(); i++){
+                                            for (int i = 0; i < list_home.size(); i++) {
                                                 AllFileDTO fileHome = list_home.get(i);
-                                                if (fileHome.getPath().equals(path)){
+                                                if (fileHome.getPath().equals(path)) {
                                                     posHome = i;
                                                     list_home.remove(posHome);
                                                     adapter.saveFile(list_home);
@@ -439,17 +458,17 @@ public class BookmarkADAPTER extends RecyclerView.Adapter<BookmarkADAPTER.ViewHo
         holder.bookmark_file.setOnClickListener(new OnSingleClickListener() {
             @Override
             public void onSingleClick(View view) {
-                adapter = new HomeADAPTER(context,list_home);
+                adapter = new HomeADAPTER(context, list_home);
                 list_home = adapter.readFile();
                 String path = list_bookmark.get(position).getPath();
 
                 int posHome = 0;
-                for (int i = 0; i < list_home.size(); i++){
+                for (int i = 0; i < list_home.size(); i++) {
                     AllFileDTO fileHome = list_home.get(i);
-                    if (fileHome.getPath().equals(path)){
+                    if (fileHome.getPath().equals(path)) {
                         posHome = i;
                         fileHome.setBookmark(0);
-                        list_home.set(posHome,fileHome);
+                        list_home.set(posHome, fileHome);
                         adapter.saveFile(list_home);
                         break;
                     }
@@ -462,10 +481,12 @@ public class BookmarkADAPTER extends RecyclerView.Adapter<BookmarkADAPTER.ViewHo
             }
         });
     }
-    public void loadFile(){
+
+    public void loadFile() {
         FileDATABASE.getInstance(context).fileDAO().getListFile();
         notifyDataSetChanged();
     }
+
     @Override
     public int getItemCount() {
         return list_bookmark.size();
@@ -501,7 +522,7 @@ public class BookmarkADAPTER extends RecyclerView.Adapter<BookmarkADAPTER.ViewHo
         };
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView img_icon_file;
         TextView tv_ten_file;
         TextView tv_ngay;

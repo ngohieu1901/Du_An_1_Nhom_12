@@ -128,6 +128,15 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
                 LinearLayout lnBookmark = view.findViewById(R.id.layout_bookmark);
                 LinearLayout lnShare = view.findViewById(R.id.layout_menu_share);
                 LinearLayout lnDelete = view.findViewById(R.id.layout_delete);
+                TextView tvRename,tvBookmark,tvShare,tvDelete;
+                tvRename  = view.findViewById(R.id.tv_rename);
+                tvDelete  = view.findViewById(R.id.tv_delete);
+                tvBookmark  = view.findViewById(R.id.tv_bookmark);
+                tvShare  = view.findViewById(R.id.tv_share);
+                tvRename.setText(context.getString(R.string.rename_popup));
+                tvDelete.setText(context.getString(R.string.delete_popup));
+                tvShare.setText(context.getString(R.string.tv_share));
+                tvBookmark.setText(context.getString(R.string.bookmark_popup));
 //RENAMEEEEEEEEEEEEEEEEE
                 lnRename.setOnClickListener(new OnSingleClickListener() {
                     @Override
@@ -144,7 +153,11 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
                         Button btn_cancel = v.findViewById(R.id.btn_cancel);
                         Button btn_agree = v.findViewById(R.id.btn_agree);
 
-                        ed_ten.setText(allFileDTO.getTen());
+                        String name = allFileDTO.getTen();
+                        if(name.indexOf(".") > 0){
+                            name = name.substring(0,name.lastIndexOf("."));
+                        }
+                        ed_ten.setText(name);
                         btn_agree.setOnClickListener(new OnSingleClickListener() {
                             @Override
                             public void onSingleClick(View view) {
@@ -156,35 +169,39 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
                                 Log.d("ZZZZZ","Path new: "+ "/storage/emulated/0/"+ed_ten.getText().toString());
 
                                 if (oldFile.exists()) {
-                                    boolean success = oldFile.renameTo(new File("/storage/emulated/0/"+ed_ten.getText().toString()));
-                                    if (success) {
-                                        allFileDTO.setTen(ed_ten.getText().toString());
-                                        allFileDTO.setPath("/storage/emulated/0/"+ed_ten.getText().toString());
-                                        list_home.set(position, allFileDTO);
-                                        notifyItemChanged(position);
-                                        saveFile(list_home);
-
-                                        AllFileDTO fileDTO = null;
-                                        list_bookmark = (ArrayList<AllFileDTO>) FileDATABASE.getInstance(context).fileDAO().getListFile();
-                                        for (AllFileDTO file : list_bookmark) {
-                                            if (file.getPath().equals(path)) {
-                                                fileDTO = file;
-                                                break;
-                                            }
-                                        }
-                                        if (fileDTO != null) {
-                                            fileDTO.setTen(ed_ten.getText().toString());
-                                            fileDTO.setPath("/storage/emulated/0/"+ed_ten.getText().toString());
-                                            FileDATABASE.getInstance(context).fileDAO().updateFile(fileDTO);
-                                        }
-                                        Toast.makeText(context, context.getString(R.string.toast_rename), Toast.LENGTH_SHORT).show();
+                                    if (ed_ten.getText().toString().isEmpty()) {
+                                        Toast.makeText(context, "Please enter name file", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        Toast.makeText(context, context.getString(R.string.toast_failed), Toast.LENGTH_SHORT).show();
+                                        boolean success = oldFile.renameTo(new File("/storage/emulated/0/" + ed_ten.getText().toString() + ".pdf"));
+                                        if (success) {
+                                            allFileDTO.setTen(ed_ten.getText().toString() + ".pdf");
+                                            allFileDTO.setPath("/storage/emulated/0/" + ed_ten.getText().toString() + ".pdf");
+                                            list_home.set(position, allFileDTO);
+                                            notifyItemChanged(position);
+                                            saveFile(list_home);
+
+                                            AllFileDTO fileDTO = null;
+                                            list_bookmark = (ArrayList<AllFileDTO>) FileDATABASE.getInstance(context).fileDAO().getListFile();
+                                            for (AllFileDTO file : list_bookmark) {
+                                                if (file.getPath().equals(path)) {
+                                                    fileDTO = file;
+                                                    break;
+                                                }
+                                            }
+                                            if (fileDTO != null) {
+                                                fileDTO.setTen(ed_ten.getText().toString() + ".pdf");
+                                                fileDTO.setPath("/storage/emulated/0/" + ed_ten.getText().toString() + ".pdf");
+                                                FileDATABASE.getInstance(context).fileDAO().updateFile(fileDTO);
+                                            }
+                                            Toast.makeText(context, context.getString(R.string.toast_rename), Toast.LENGTH_SHORT).show();
+                                            dialog.dismiss();
+                                        } else {
+                                            Toast.makeText(context, context.getString(R.string.toast_failed), Toast.LENGTH_SHORT).show();
+                                        }
                                     }
-                                } else {
+                                }else {
                                     Toast.makeText(context, context.getString(R.string.toast_exists), Toast.LENGTH_SHORT).show();
                                 }
-                                dialog.dismiss();
                             }
                         });
 
@@ -294,7 +311,7 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
 
                     }
                 });
-                popupWindow = new PopupWindow(view,500,LinearLayout.LayoutParams.WRAP_CONTENT,true);
+                popupWindow = new PopupWindow(view,350,LinearLayout.LayoutParams.WRAP_CONTENT,true);
             }
 
             private void showPopupMenu(View view) {
