@@ -95,14 +95,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showNotification(){
-        //Khai bao intent de nhan tuong tac khi bam vao notify
-        Intent intendDemo = new Intent(this, TutorialActivity.class);
-        intendDemo.putExtra("duLieu","Dữ liệu gửi từ notifi vao acti");
-        //tạo stack để gọi acti
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(MainActivity.this);
-        stackBuilder.addNextIntentWithParentStack(intendDemo);
-        //Lay pendingIntent de truyen vao notifi
-        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);
+        // Khai báo Intent với flags để đặt TutorialActivity lên đỉnh backstack hiện tại
+        Intent intentDemo = new Intent(this, TutorialActivity.class);
+        intentDemo.putExtra("duLieu", "Dữ liệu gửi từ notify vào activity");
+// Đặt flags để đặt TutorialActivity lên đỉnh backstack hiện tại
+        intentDemo.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+// Sử dụng PendingIntent với Intent đã được thiết lập các flags
+        PendingIntent resultPendingIntent = PendingIntent.getActivity(
+                MainActivity.this, 0, intentDemo, PendingIntent.FLAG_UPDATE_CURRENT);
         //Khoi tao layout cho Notify
         Bitmap logo = BitmapFactory.decodeResource(getResources(),R.drawable.bg_notify);
         Notification customNotification = new NotificationCompat.Builder(MainActivity.this, NotifyConfig.CHANEL_ID)
