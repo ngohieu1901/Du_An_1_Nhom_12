@@ -101,6 +101,7 @@ public class ScanPdfActivity extends AppCompatActivity {
 //
 //            }
 //        });
+
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,7 +127,10 @@ public class ScanPdfActivity extends AppCompatActivity {
         if (data != null) {
             Uri selectedImage = data.getData();
             String[] filePathColumn = {MediaStore.Images.Media.DATA,MediaStore.Images.Media.DISPLAY_NAME};
-            Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null);
+            Cursor cursor = null;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                cursor = getContentResolver().query(selectedImage, filePathColumn, null, null);
+            }
             cursor.moveToFirst();
             int filePath = cursor.getColumnIndex(filePathColumn[0]);
             int fileName = cursor.getColumnIndex(filePathColumn[1]);
