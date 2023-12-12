@@ -54,9 +54,9 @@ public class ScanPdfActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE = 100;
 
-    String folderPath = Environment.getDataDirectory().getAbsolutePath() + "/storage/emulated/0/image_to_pdf";
+    String folderPath = Environment.getDataDirectory().getAbsolutePath() + "/storage/emulated/0/";
 
-    File directory = new File("/sdcard/image_to_pdf/");
+    File directory = new File("/sdcard/");
 
     Button camera, upload, convert;
     ImageView img;
