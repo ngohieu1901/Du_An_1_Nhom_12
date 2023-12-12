@@ -58,9 +58,9 @@ public class TutorialActivity extends AppCompatActivity {
 
         // Hiển thị danh sách ảnh cho phần "Hướng dẫn convert img to PDF"
         List<String> convertTextImages = new ArrayList<>();
-        convertTextImages.add("android.resource://" + getPackageName() + "/" + R.drawable.edit_2);  // Thêm đường dẫn hình ảnh của bạn vào đây
-        convertTextImages.add("android.resource://" + getPackageName() + "/" + R.drawable.edit_2);
-        convertTextImages.add("android.resource://" + getPackageName() + "/" + R.drawable.edit_3);
+        convertTextImages.add("android.resource://" + getPackageName() + "/" + R.drawable.anhsuaa4);  // Thêm đường dẫn hình ảnh của bạn vào đây
+        convertTextImages.add("android.resource://" + getPackageName() + "/" + R.drawable.anhsuaa5);
+        convertTextImages.add("android.resource://" + getPackageName() + "/" + R.drawable.anhsua3);
         convertTextAdapter = new ImageAdapter(this, convertTextImages);
         RecyclerView convertTextRecyclerView = findViewById(R.id.convertTextRecyclerView);
         convertTextRecyclerView.setAdapter(convertTextAdapter);
