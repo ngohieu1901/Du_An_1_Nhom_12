@@ -63,6 +63,8 @@ public class ScanPdfActivity extends AppCompatActivity {
     TextView title;
     ProgressBar progressBar;
 
+    ImageButton back;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +77,14 @@ public class ScanPdfActivity extends AppCompatActivity {
         img = findViewById(R.id.convertor_toll_imageView);
         title = findViewById(R.id.convertor_toll_fileName);
         progressBar = findViewById(R.id.progressBar);
+        back = findViewById(R.id.iv_back_setting);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 //        camera.setOnClickListener(new View.OnClickListener() {
 //            @Override
