@@ -64,12 +64,9 @@ public class TutorialActivity extends AppCompatActivity {
 
     private void initViews() {
         TextView pdfTextTitle = findViewById(R.id.pdfTextTitle);
-
         TextView convertTextTitle = findViewById(R.id.convertTextTitle);
-
-
         // Thêm nội dung cho các tiêu đề
         pdfTextTitle.setText("Hướng dẫn tạo file PDF text");
-        convertTextTitle.setText("Hướng dẫn convert img to PDF");
+        convertTextTitle.setText("Hướng dẫn chuyển ảnh thành file PDF");
     }
 }

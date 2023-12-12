@@ -8,7 +8,7 @@
     <RelativeLayout
         android:id="@+id/headerLayout"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="60dp"
         android:background="@color/language">
 
         <!-- Back Button -->
@@ -28,6 +28,8 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="Tutorial"
+            android:textStyle="bold"
+            android:textAllCaps="true"
             android:textColor="@android:color/white"
             android:textSize="20sp" />
     </RelativeLayout>
@@ -54,10 +56,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Hướng dẫn tạo file PDF text"
-                android:textSize="28sp"
+                android:textSize="24sp"
                 android:textStyle="bold"
-
-                android:layout_marginTop="16dp"
                 android:padding="16dp"/>
 
             <!-- RecyclerView cho danh sách ảnh PDF text -->
@@ -67,8 +67,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/pdfTextTitle"
                 android:layout_marginTop="8dp"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp" />
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                />
 
 
             <!-- RecyclerView cho danh sách ảnh PDF text -->
@@ -78,16 +79,16 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/pdfTextTitle"
                 android:layout_marginTop="8dp"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp" />
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp" />
             <!-- Hướng dẫn convert img to PDF -->
             <TextView
                 android:id="@+id/convertTextTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hướng dẫn convert img to PDF"
-                android:textSize="28sp"
-                android:layout_marginTop="16dp"
+                android:text="Hướng dẫn chuyển ảnh thành PDF"
+                android:textSize="24sp"
+                android:layout_marginTop="8dp"
                 android:padding="16dp"
                 android:textStyle="bold"
                 android:layout_below="@id/pdfTextRecyclerView" />
@@ -99,8 +100,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/convertTextTitle"
                 android:layout_marginTop="8dp"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp" />
+                android:layout_marginBottom="12dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp" />
 
 
         </RelativeLayout>
