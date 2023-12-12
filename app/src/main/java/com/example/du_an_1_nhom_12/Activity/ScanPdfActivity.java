@@ -69,6 +69,9 @@ public class ScanPdfActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_pdf);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.language));
+        }
         askPermission();
 
 //        camera = findViewById(R.id.convertor_toll_camera);

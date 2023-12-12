@@ -36,7 +36,7 @@ public class WritePdfActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write_pdf);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.status_pdf));
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.language));
         }
         mTextEt = findViewById(R.id.textEt);
         mSaveBtn = findViewById(R.id.saveBtn);

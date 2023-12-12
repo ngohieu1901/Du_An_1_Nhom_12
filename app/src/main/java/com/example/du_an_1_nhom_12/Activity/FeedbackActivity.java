@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.du_an_1_nhom_12.R;
 import com.example.du_an_1_nhom_12.SUPPORT.OnSingleClickListener;
@@ -25,6 +26,10 @@ public class FeedbackActivity extends AppCompatActivity {
         editTextFeedback = findViewById(R.id.editTextFeedback);
         Button btn_cancel = findViewById(R.id.btn_cancel1);
         Button btn_send = findViewById(R.id.btn_send);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.language));
+        }
 
         btn_cancel.setOnClickListener(new OnSingleClickListener() {
             @Override
