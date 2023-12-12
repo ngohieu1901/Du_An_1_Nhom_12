@@ -1,19 +1,14 @@
 package com.example.du_an_1_nhom_12.FRAGMENT;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -77,6 +72,11 @@ public class FragSetting extends Fragment {
             @Override
             public void onSingleClick(View view) {
                 startActivity(new Intent(getActivity(), RateAppActivity.class));
+//                RateUsDialog rateUsDialog= new RateUsDialog(getContext());
+//
+//                rateUsDialog.getWindow().setBackgroundDrawable(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
+//                rateUsDialog.setCancelable(false);
+//                rateUsDialog.show();
             }
         });
 
@@ -84,6 +84,9 @@ public class FragSetting extends Fragment {
         layout_scan.setOnClickListener(new OnSingleClickListener() {
             @Override
             public void onSingleClick(View view) {
+//                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+//                FragImageToPdf fragImageToPdf = new FragImageToPdf();
+//                fragmentManager.beginTransaction().replace(R.id.frag_container_file, fragImageToPdf).commit();
                 startActivity(new Intent(getActivity(), ScanPdfActivity.class));
             }
         });
