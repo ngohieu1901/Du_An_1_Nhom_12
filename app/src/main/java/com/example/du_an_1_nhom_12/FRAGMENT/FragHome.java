@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -71,6 +72,7 @@ public class FragHome extends Fragment implements SwipeRefreshLayout.OnRefreshLi
         super.onViewCreated(view, savedInstanceState);
         srl_home = (SwipeRefreshLayout) view.findViewById(R.id.srl_home);
         srl_home.setOnRefreshListener(this);
+        srl_home.setColorSchemeColors(Color.parseColor("#CD3527"));
         //save phần tử trong dialog
         SharedPreferences preferences = getActivity().getSharedPreferences("SAVE_DIALOG_HOME", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
@@ -251,7 +253,6 @@ public class FragHome extends Fragment implements SwipeRefreshLayout.OnRefreshLi
             public void run() {
                 ArrayList<AllFileDTO> existingList = readFile(); // Đọc danh sách file đã có từ FileInputStream
                 ArrayList<AllFileDTO> newList = loadFiles(); // Tải danh sách file mới từ thiết bị
-
                 // Kiểm tra từng file trong danh sách mới tải về
                 for (AllFileDTO newFile : newList) {
                     boolean fileExists = false;
@@ -274,7 +275,7 @@ public class FragHome extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                 adapter.setData(list);
                 srl_home.setRefreshing(false);
             }
-        }, 2000);
+        }, 1000);
     }
 
     public ArrayList readFile() {
