@@ -2,6 +2,7 @@ package com.example.du_an_1_nhom_12.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Intent;
@@ -34,6 +35,9 @@ public class WritePdfActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write_pdf);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.status_pdf));
+        }
         mTextEt = findViewById(R.id.textEt);
         mSaveBtn = findViewById(R.id.saveBtn);
         mCancelBtn = findViewById(R.id.cancelBtn);

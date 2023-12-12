@@ -12,6 +12,7 @@
         android:background="#CD3527"
         android:gravity="center"
         android:text="@string/setting_frag"
+        android:fontFamily="@font/bevietnampro_regular"
         android:textColor="@color/white"
         android:textSize="31sp"
         android:textStyle="bold" />
@@ -37,6 +38,7 @@
             android:layout_marginLeft="1.8dp"
             android:layout_marginTop="1.8dp"
             android:text="@string/tv_xlsx"
+            android:fontFamily="@font/bevietnampro_md"
             android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -47,6 +49,7 @@
             android:layout_height="27dp"
             android:layout_gravity="center_horizontal"
             android:text="@string/tv_xlsx"
+            android:fontFamily="@font/bevietnampro_md"
             android:textColor="@color/language"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -89,20 +92,26 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    >
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Image To PDF"
+                        android:fontFamily="@font/notosan_md"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Convert jpg images to pdf" />
+                        android:layout_height="wrap_content"
+                        android:text="Convert jpg images to pdf"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/notosan_regular"
+                        android:textStyle="bold"
+                        />
                 </LinearLayout>
             </LinearLayout>
 
@@ -138,6 +147,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tv_write"
+                        android:fontFamily="@font/notosan_md"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -145,7 +155,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/tv_write1" />
+                        android:text="@string/tv_write1"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/notosan_regular"
+                        android:textStyle="bold"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -181,6 +194,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tv_lang"
+                        android:fontFamily="@font/notosan_md"
+
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -188,7 +203,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/tv_lang1" />
+                        android:text="@string/tv_lang1"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/notosan_regular"
+                        android:textStyle="bold"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -225,6 +243,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tv_share"
+                        android:fontFamily="@font/notosan_md"
+
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -232,7 +252,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/tv_share1" />
+                        android:text="@string/tv_share1"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/notosan_regular"
+                        android:textStyle="bold"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -269,6 +292,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tv_feedback"
+                        android:fontFamily="@font/notosan_md"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -276,7 +300,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/tv_feedback1" />
+                        android:text="@string/tv_feedback1"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/notosan_regular"
+                        android:textStyle="bold"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -313,6 +340,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tv_rate"
+                        android:fontFamily="@font/notosan_md"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -320,7 +348,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/tv_rate1" />
+                        android:text="@string/tv_rate1"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/notosan_regular"
+                        android:textStyle="bold"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

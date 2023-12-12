@@ -26,6 +26,7 @@
             android:layout_height="27dp"
             android:layout_gravity="center_horizontal"
             android:text="@string/tv_xlsx"
+            android:fontFamily="@font/bevietnampro_md"
             android:textSize="22sp"
             android:textColor="@color/black"
             android:textStyle="bold"
@@ -37,6 +38,8 @@
             android:layout_width="wrap_content"
             android:layout_height="27dp"
             android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/bevietnampro_md"
+
             android:text="@string/tv_xlsx"
             android:textSize="22sp"
             android:textStyle="bold"

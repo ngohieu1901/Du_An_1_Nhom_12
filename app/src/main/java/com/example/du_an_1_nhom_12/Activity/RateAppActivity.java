@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.example.du_an_1_nhom_12.R;
 
 public class RateAppActivity extends AppCompatActivity {
-
     private float userRate = 0;
 
     @Override

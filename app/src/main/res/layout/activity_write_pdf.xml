@@ -9,36 +9,36 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/language"
+        android:background="@color/language"
         android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
         >
         <ImageView
             android:id="@+id/back_writepdf"
             android:layout_width="30dp"
             android:layout_height="80dp"
-            android:src="@drawable/back_white"
-            android:background="@color/language"
+            android:src="@drawable/ic_back_lg"
+            android:layout_marginLeft="20dp"
             />
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="80dp"
-            android:background="@color/language"
-            android:text="Create File PDF text"
-            android:textSize="25sp"
+            android:layout_weight="1"
+            android:text="Create File PDF"
+            android:fontFamily="@font/bevietnampro_regular"
+            android:textSize="28sp"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:gravity="center"
             />
+        <View
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            />
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="           Tạo File PDF text"
-        android:textStyle="bold"
-        android:textSize="30dp"
-        android:textColor="#BA3F3F"
-        />
+
     <EditText
         android:id="@+id/textEt"
         android:layout_width="350dp"
