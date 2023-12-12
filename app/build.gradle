@@ -37,13 +37,15 @@ dependencies {
     def room_version = "2.5.0"
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
-
+    //gson
     implementation 'com.google.code.gson:gson:2.10.1'
+    //dot indicator
     implementation 'me.relex:circleindicator:2.1.6'
-
+    //view pdf
     implementation 'com.github.barteksc:android-pdf-viewer:3.2.0-beta.1'
-
+    //swipe refresh
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01"
+    //create pdf text
     implementation "com.itextpdf:itextg:5.5.10"
 
 }
