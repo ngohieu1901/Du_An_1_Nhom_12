@@ -7,7 +7,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -99,7 +101,16 @@ public class BookmarkADAPTER extends RecyclerView.Adapter<BookmarkADAPTER.ViewHo
             public void onSingleClick(View view) {
 //                showPopupMenu(holder.menu_custom);
                 setPopupWindow();
-                popupWindow.showAsDropDown(view, -20, 0);
+                int[] values = new int[2];
+                holder.menu_custom.getLocationInWindow(values);
+                int positionOfIcon = values[1];// lay toa do truc Y
+                DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+                int height = displayMetrics.heightPixels * 2 / 3;
+                if (positionOfIcon > height) {
+                    popupWindow.showAsDropDown(view, -22, -(holder.menu_custom.getHeight() * 7), Gravity.BOTTOM | Gravity.END);
+                } else {
+                    popupWindow.showAsDropDown(view, -22, 0, Gravity.TOP | Gravity.END);
+                }
             }
 
             public void setPopupWindow() {
@@ -118,6 +129,9 @@ public class BookmarkADAPTER extends RecyclerView.Adapter<BookmarkADAPTER.ViewHo
                 tvDelete.setText(context.getString(R.string.delete_popup));
                 tvShare.setText(context.getString(R.string.tv_share));
                 tvBookmark.setText(context.getString(R.string.bookmark_popup));
+                popupWindow = new PopupWindow(view, (int) context.getResources().getDimension(com.intuit.sdp.R.dimen._130sdp), ViewGroup.LayoutParams.WRAP_CONTENT, true);
+                popupWindow.setElevation(10);
+
 //UPDATEEEEEEEEEEEEEEEEEE
                 lnRename.setOnClickListener(new OnSingleClickListener() {
                     @Override
@@ -297,7 +311,6 @@ public class BookmarkADAPTER extends RecyclerView.Adapter<BookmarkADAPTER.ViewHo
 
                     }
                 });
-                popupWindow = new PopupWindow(view, 350, LinearLayout.LayoutParams.WRAP_CONTENT, true);
             }
 
             private void showPopupMenu(View view) {

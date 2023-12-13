@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         intentDemo.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 // Sử dụng PendingIntent với Intent đã được thiết lập các flags
         PendingIntent resultPendingIntent = PendingIntent.getActivity(
-                MainActivity.this, 0, intentDemo, PendingIntent.FLAG_UPDATE_CURRENT);
+                MainActivity.this, 0, intentDemo, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         //Khoi tao layout cho Notify
         Bitmap logo = BitmapFactory.decodeResource(getResources(),R.drawable.bg_notify);
         Notification customNotification = new NotificationCompat.Builder(MainActivity.this, NotifyConfig.CHANEL_ID)

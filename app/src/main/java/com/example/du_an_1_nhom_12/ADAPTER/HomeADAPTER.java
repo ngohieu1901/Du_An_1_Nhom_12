@@ -9,7 +9,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -57,7 +59,7 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
         this.list_file_old = list;
     }
 
-    public void setData(ArrayList<AllFileDTO> list){
+    public void setData(ArrayList<AllFileDTO> list) {
         this.list_home = list;
         notifyDataSetChanged();
     }
@@ -87,7 +89,7 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
         holder.itemView.setOnClickListener(new OnSingleClickListener() {
             @Override
             public void onSingleClick(View view) {
-                if(!isActivityOpen){
+                if (!isActivityOpen) {
                     isActivityOpen = true;
                     String path = list_home.get(position).getPath();
                     String name = list_home.get(position).getTen();
@@ -118,9 +120,20 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
             public void onSingleClick(View view) {
                 // showPopupMenu(holder.menu_custom);
                 setPopupWindow();
-                popupWindow.showAsDropDown(view,-50,0);
+                int[] values = new int[2];
+                holder.menu_custom.getLocationInWindow(values);
+                int positionOfIcon = values[1];// lay toa do truc Y
+                DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+                int height = displayMetrics.heightPixels * 2 / 3;
+                if (positionOfIcon > height) {
+                    popupWindow.showAsDropDown(view, -22, -(holder.menu_custom.getHeight() * 7), Gravity.BOTTOM | Gravity.END);
+                } else {
+                    popupWindow.showAsDropDown(view, -22, 0, Gravity.TOP | Gravity.END);
+                }
+
             }
-            public void setPopupWindow(){
+
+            public void setPopupWindow() {
                 LayoutInflater inflater = (LayoutInflater)
                         context.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View view = inflater.inflate(R.layout.menu_popup, null);
@@ -128,15 +141,20 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
                 LinearLayout lnBookmark = view.findViewById(R.id.layout_bookmark);
                 LinearLayout lnShare = view.findViewById(R.id.layout_menu_share);
                 LinearLayout lnDelete = view.findViewById(R.id.layout_delete);
-                TextView tvRename,tvBookmark,tvShare,tvDelete;
-                tvRename  = view.findViewById(R.id.tv_rename);
-                tvDelete  = view.findViewById(R.id.tv_delete);
-                tvBookmark  = view.findViewById(R.id.tv_bookmark);
-                tvShare  = view.findViewById(R.id.tv_share);
+                TextView tvRename, tvBookmark, tvShare, tvDelete;
+                tvRename = view.findViewById(R.id.tv_rename);
+                tvDelete = view.findViewById(R.id.tv_delete);
+                tvBookmark = view.findViewById(R.id.tv_bookmark);
+                tvShare = view.findViewById(R.id.tv_share);
                 tvRename.setText(context.getString(R.string.rename_popup));
                 tvDelete.setText(context.getString(R.string.delete_popup));
                 tvShare.setText(context.getString(R.string.tv_share));
                 tvBookmark.setText(context.getString(R.string.bookmark_popup));
+
+                popupWindow = new PopupWindow(view, (int) context.getResources().getDimension(com.intuit.sdp.R.dimen._130sdp), ViewGroup.LayoutParams.WRAP_CONTENT, true);
+                popupWindow.setElevation(10);
+
+
 //RENAMEEEEEEEEEEEEEEEEE
                 lnRename.setOnClickListener(new OnSingleClickListener() {
                     @Override
@@ -154,8 +172,8 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
                         Button btn_agree = v.findViewById(R.id.btn_agree);
 
                         String name = allFileDTO.getTen();
-                        if(name.indexOf(".") > 0){
-                            name = name.substring(0,name.lastIndexOf("."));
+                        if (name.indexOf(".") > 0) {
+                            name = name.substring(0, name.lastIndexOf("."));
                         }
                         ed_ten.setText(name);
                         btn_agree.setOnClickListener(new OnSingleClickListener() {
@@ -164,9 +182,9 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
                                 String path = allFileDTO.getPath();
 
                                 File oldFile = new File(path);
-                                Log.d("ZZZZZ","Path old: "+path);
-                                File newFile = new File("/storage/emulated/0/"+ed_ten.getText().toString());
-                                Log.d("ZZZZZ","Path new: "+ "/storage/emulated/0/"+ed_ten.getText().toString());
+                                Log.d("ZZZZZ", "Path old: " + path);
+                                File newFile = new File("/storage/emulated/0/" + ed_ten.getText().toString());
+                                Log.d("ZZZZZ", "Path new: " + "/storage/emulated/0/" + ed_ten.getText().toString());
 
                                 if (oldFile.exists()) {
                                     if (ed_ten.getText().toString().isEmpty()) {
@@ -199,7 +217,7 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
                                             Toast.makeText(context, context.getString(R.string.toast_failed), Toast.LENGTH_SHORT).show();
                                         }
                                     }
-                                }else {
+                                } else {
                                     Toast.makeText(context, context.getString(R.string.toast_exists), Toast.LENGTH_SHORT).show();
                                 }
                             }
@@ -308,10 +326,8 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
                         intent.putExtra(Intent.EXTRA_STREAM, pdfUri);
                         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // Để cấp quyền đọc cho ứng dụng khác
                         context.startActivity(Intent.createChooser(intent, "Chia sẻ tài liệu PDF"));
-
                     }
                 });
-                popupWindow = new PopupWindow(view,350,LinearLayout.LayoutParams.WRAP_CONTENT,true);
             }
 
             private void showPopupMenu(View view) {
@@ -339,15 +355,15 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
                                     String path = allFileDTO.getPath();
 
                                     File oldFile = new File(path);
-                                    Log.d("ZZZZZ","Path old: "+path);
-                                    File newFile = new File("/storage/emulated/0/"+ed_ten.getText().toString());
-                                    Log.d("ZZZZZ","Path new: "+ "/storage/emulated/0/"+ed_ten.getText().toString());
+                                    Log.d("ZZZZZ", "Path old: " + path);
+                                    File newFile = new File("/storage/emulated/0/" + ed_ten.getText().toString());
+                                    Log.d("ZZZZZ", "Path new: " + "/storage/emulated/0/" + ed_ten.getText().toString());
 
                                     if (oldFile.exists()) {
-                                        boolean success = oldFile.renameTo(new File("/storage/emulated/0/"+ed_ten.getText().toString()));
+                                        boolean success = oldFile.renameTo(new File("/storage/emulated/0/" + ed_ten.getText().toString()));
                                         if (success) {
                                             allFileDTO.setTen(ed_ten.getText().toString());
-                                            allFileDTO.setPath("/storage/emulated/0/"+ed_ten.getText().toString());
+                                            allFileDTO.setPath("/storage/emulated/0/" + ed_ten.getText().toString());
                                             list_home.set(position, allFileDTO);
                                             notifyItemChanged(position);
                                             saveFile(list_home);
@@ -362,7 +378,7 @@ public class HomeADAPTER extends RecyclerView.Adapter<HomeADAPTER.ViewHolder> im
                                             }
                                             if (fileDTO != null) {
                                                 fileDTO.setTen(ed_ten.getText().toString());
-                                                fileDTO.setPath("/storage/emulated/0/"+ed_ten.getText().toString());
+                                                fileDTO.setPath("/storage/emulated/0/" + ed_ten.getText().toString());
                                                 FileDATABASE.getInstance(context).fileDAO().updateFile(fileDTO);
                                             }
                                             Toast.makeText(context, context.getString(R.string.toast_rename), Toast.LENGTH_SHORT).show();
